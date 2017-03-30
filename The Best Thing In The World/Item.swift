@@ -10,17 +10,35 @@ import Foundation
 
 class Item {
     
-    var iDImage:String?
-    var text:String?
-    var owner:User
-    var qtdVotes:Int
+    private var idImage:String?
+    private var text:String?
+    private var owner:User
+    private var qtdVotes:Int
     
-    
-    init() {
-        
+    public init() {
         owner = User()
         qtdVotes = 0
     }
+    
+    public init(text: String, image: String) {
+        self.text = text
+        self.idImage = image
+        owner = User()
+        qtdVotes = 0
+    }
+    
+    
+    func getIdImage() -> String {
+        
+        return self.idImage!
+    }
+    
+    
+    func increaseQtdVotes() {
+        
+        self.qtdVotes += 1
+    }
+
     
     
 }

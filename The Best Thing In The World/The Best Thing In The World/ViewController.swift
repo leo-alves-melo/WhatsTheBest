@@ -18,7 +18,7 @@ class ViewController: UIViewController, ItemPicker {
     private var leftViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     private var rightViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     
-    private 
+    
     
     @IBOutlet weak var leftChoice: ContentView!
     @IBOutlet weak var rightChoice: ContentView!
