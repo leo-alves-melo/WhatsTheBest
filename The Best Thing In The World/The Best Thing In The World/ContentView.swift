@@ -11,50 +11,19 @@ import UIKit
 class ContentView : UIView {
     
     //Define your initialisers here
+    private var initialTouchLocation:CGPoint?
     
-    private var centerOffset:CGPoint = CGPoint(x: 0, y:0)
-    
-   /* override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
-        if let touch = touches.first as UITouch {
-            let currentPoint = touch.location(in: self)
-            // do something with your currentPoint
-        }
-    } */
-    
-    private func operateCGPoints(_ a: CGPoint, _ b: CGPoint, _ op: (CGFloat, CGFloat) -> CGFloat) -> CGPoint {
-        return CGPoint(x: op(a.x, b.x), y: op(a.y, b.y))
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.layer.cornerRadius = 10.0
+        self.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        self.layer.shadowRadius = 5.0
+        //self.layer.shadowOffset = CGSize(width: 3 , height: 3)
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shadowOpacity = 0.2
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
+        self.layer.masksToBounds = false
     }
-    
-    func setOffset(_ newOffset: CGPoint) {
-        
-        let localCenter = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
-        
-        centerOffset = operateCGPoints(localCenter, newOffset, {a, b in a - b})
-        print("Inner coordinates: \(newOffset) - Relative to center: \(centerOffset)")
-    }
-    
-    func moveToWithOffset(_ newPos: CGPoint) {
-        self.center = operateCGPoints(newPos, centerOffset, {a, b in a + b})
-    }
-    
-    func animate(tempo:TimeInterval) {
-        
-        /*CATransaction.begin()
-        CATransaction.setCompletionBlock({
-            
-        })*/
-        
-        let rotation = CABasicAnimation(keyPath: "transform.rotation")
-        rotation.fromValue = 0.0
-        rotation.duration = tempo
-        rotation.toValue = 2 * CGFloat.pi
-        
-        /*let growth = CABasicAnimation(keyPath: "bounds.rotation")
-        rotation.fromValue = 0.0
-        rotation.duration = 0.5
-        rotation.toValue = 2 * CGFloat.pi*/
-        
-        self.layer.add(rotation, forKey: nil)
-    }
-    
 }

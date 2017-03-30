@@ -17,6 +17,7 @@
 		FE62A4151E8BFCE2005594B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE62A4141E8BFCE2005594B6 /* Assets.xcassets */; };
 		FE62A4181E8BFCE2005594B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE62A4161E8BFCE2005594B6 /* LaunchScreen.storyboard */; };
 		FE62A4201E8C0250005594B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A41F1E8C0250005594B6 /* ContentView.swift */; };
+		FE719AD81E8D5460000943B9 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE719AD71E8D5460000943B9 /* StarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FE62A4171E8BFCE2005594B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE62A4191E8BFCE2005594B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE62A41F1E8C0250005594B6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FE719AD71E8D5460000943B9 /* StarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,19 +66,44 @@
 		FE62A40C1E8BFCE2005594B6 /* The Best Thing In The World */ = {
 			isa = PBXGroup;
 			children = (
-				7EEB10BE1E8D3469005CEBF6 /* Item.swift */,
-				7EEB10C01E8D348D005CEBF6 /* User.swift */,
-				FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */,
-				FE62A41F1E8C0250005594B6 /* ContentView.swift */,
-				FE62A40F1E8BFCE2005594B6 /* ViewController.swift */,
+				FE719AD91E8D5627000943B9 /* Model */,
+				FE719ADA1E8D5647000943B9 /* View */,
+				FE719ADB1E8D564C000943B9 /* Controller */,
 				FE62A4111E8BFCE2005594B6 /* Main.storyboard */,
 				FE62A4141E8BFCE2005594B6 /* Assets.xcassets */,
 				FE62A4161E8BFCE2005594B6 /* LaunchScreen.storyboard */,
 				FE62A4191E8BFCE2005594B6 /* Info.plist */,
-				8BBA2D671E8D36F100254A67 /* ServerService.swift */,
-				8BBA2D691E8D38BF00254A67 /* ServerModel.swift */,
+				FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */,
 			);
 			path = "The Best Thing In The World";
+			sourceTree = "<group>";
+		};
+		FE719AD91E8D5627000943B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7EEB10C01E8D348D005CEBF6 /* User.swift */,
+				7EEB10BE1E8D3469005CEBF6 /* Item.swift */,
+				8BBA2D691E8D38BF00254A67 /* ServerModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FE719ADA1E8D5647000943B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE719AD71E8D5460000943B9 /* StarView.swift */,
+				FE62A41F1E8C0250005594B6 /* ContentView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		FE719ADB1E8D564C000943B9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE62A40F1E8BFCE2005594B6 /* ViewController.swift */,
+				8BBA2D671E8D36F100254A67 /* ServerService.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +185,7 @@
 				8BBA2D681E8D36F100254A67 /* ServerService.swift in Sources */,
 				FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */,
 				7EEB10C11E8D348D005CEBF6 /* User.swift in Sources */,
+				FE719AD81E8D5460000943B9 /* StarView.swift in Sources */,
 				FE62A4201E8C0250005594B6 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

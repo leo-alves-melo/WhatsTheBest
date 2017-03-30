@@ -8,102 +8,108 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol ItemPicker {
+    func checkIfItemPicked(point: CGPoint) //-> Item?
+    func pickItem(choice:ContentView)
+}
+
+class ViewController: UIViewController, ItemPicker {
 
     private var leftViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     private var rightViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     
+    private 
+    
     @IBOutlet weak var leftChoice: ContentView!
     @IBOutlet weak var rightChoice: ContentView!
     
-    @IBOutlet weak var starView: ContentView!
+    @IBOutlet weak var starView: StarView!
     
+    var initialTouchLocation:CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        leftChoice.layer.cornerRadius = 10.0
-        leftChoice.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        leftChoice.layer.shadowRadius = 5.0
+        starView.setDelegate(delegate: self)
         
+        leftChoice.tag = 1
+        rightChoice.tag = 2
         
-        rightChoice.layer.cornerRadius = 10.0
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
+        pan.maximumNumberOfTouches = 1
+        pan.minimumNumberOfTouches = 1
+        //starView.addGestureRecognizer(pan)
         
+        let tapLeft = UITapGestureRecognizer(target: self, action: #selector(itemTapAction))
+        leftChoice.addGestureRecognizer(tapLeft)
         
-        
-        //let tap = UITapGestureRecognizer(target: self, action: #selector(imagePressed(sender:)))
-        
-        //leftChoice.addGestureRecognizer(tap)
-        //rightChoice.addGestureRecognizer(tap)
-        
+        let tapRight = UITapGestureRecognizer(target: self, action: #selector(itemTapAction))
+        rightChoice.addGestureRecognizer(tapRight)
+        //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    func panAction(rec: UIPanGestureRecognizer) {
+        
+        let p:CGPoint = rec.location(in: self.view)
+        
+        switch rec.state {
+            case .began:
+                print("began")
+                initialTouchLocation = rec.location(ofTouch: 0, in: starView)
+            case .changed:
+                starView.center = CGPoint(x: p.x, y: p.y)
+            case .ended:
+                checkIfItemPicked(point: p)
+            
+            default: break
+        }
+    }
+    
+    func itemTapAction(sender : UITapGestureRecognizer) {
+        checkIfItemPicked(point: sender.location(ofTouch: 0, in: self.view))
+        //pickItem(choice: sender)
+    }
+    
+    func checkIfItemPicked(point: CGPoint) /*-> Item? */{
+        print(point)
+        if leftChoice.frame.contains(point) {
+            print("Escolheu esquerda!")
+            animateStar()
+        }
+        else if rightChoice.frame.contains(point) {
+            print("Escolheu direita!")
+            animateStar()
+        }
+    }
+    
+    func pickItem(choice: ContentView) {
+        print("Selecionando \(choice.tag)")
+    }
+    
+    func animateStar() {
+        
+        /*CATransaction.begin()
+         CATransaction.setCompletionBlock({
+         
+         })*/
+        
+        let rotation = CABasicAnimation(keyPath: "transform.rotation")
+        rotation.fromValue = 0.0
+        rotation.duration = 0.5
+        rotation.toValue = 2 * CGFloat.pi
+        
+        /*let growth = CABasicAnimation(keyPath: "bounds.rotation")
+         rotation.fromValue = 0.0
+         rotation.duration = 0.5
+         rotation.toValue = 2 * CGFloat.pi*/
+        
+        starView.layer.add(rotation, forKey: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with: UIEvent?) {
-        
-        super.touchesBegan(touches, with: with)
-        
-        let touch:UITouch = touches.first! as UITouch
-        
-        if let choice = touch.view as? ContentView {
-            choice.setOffset(touch.location(in: touch.view))
-        }else{
-            print("touchesBegan | This is not a choice!")
-        }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with: UIEvent?) {
-        
-        super.touchesMoved(touches, with: with)
-        
-        let touch: UITouch = touches.first! as UITouch
-        
-        if let choice = touch.view as? ContentView {
-            choice.moveToWithOffset(touch.location(in: self.view))
-        } else {
-            print("touchesMoved | This is not a choice!")
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with: UIEvent?) {
-        
-        super.touchesEnded(touches, with: with)
-        
-        let touch: UITouch = touches.first! as UITouch
-        
-        if let choice = touch.view as? ContentView {
-            if choice == starView {
-                if rightChoice.frame.contains(choice.center) {
-                    print("selecionou a direita!")
-                    let tempo:TimeInterval = 0.5
-                    choice.animate(tempo: tempo)
-                    
-                    UIView.animate(withDuration: tempo/2, animations: {
-                        choice.transform = CGAffineTransform(scaleX: 2,y: 2)
-                    }, completion: { _ in
-                        UIView.animate(withDuration: tempo/2,
-                                       animations: {
-                                            choice.transform = CGAffineTransform(scaleX: 1, y: 1)
-                        })
-                    })
-                }
-                if leftChoice.frame.contains(choice.center) {
-                    print("selecionou a esquerda!")
-                }
-            }
-        }else {
-            print("touchesEnded | This is not an ImageView")
-        }
-    }
-    
-    /*internal func imagePressed(sender: UITapGestureRecognizer) {
-        sender.
-    }*/
-
 }
 
