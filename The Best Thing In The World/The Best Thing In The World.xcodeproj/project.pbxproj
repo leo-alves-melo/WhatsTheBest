@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7EEB10BF1E8D3469005CEBF6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB10BE1E8D3469005CEBF6 /* Item.swift */; };
 		7EEB10C11E8D348D005CEBF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB10C01E8D348D005CEBF6 /* User.swift */; };
+		8BBA2D681E8D36F100254A67 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA2D671E8D36F100254A67 /* ServerService.swift */; };
+		8BBA2D6A1E8D38BF00254A67 /* ServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA2D691E8D38BF00254A67 /* ServerModel.swift */; };
 		FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */; };
 		FE62A4101E8BFCE2005594B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40F1E8BFCE2005594B6 /* ViewController.swift */; };
 		FE62A4131E8BFCE2005594B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE62A4111E8BFCE2005594B6 /* Main.storyboard */; };
@@ -18,8 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7EEB10BE1E8D3469005CEBF6 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		7EEB10C01E8D348D005CEBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7EEB10BE1E8D3469005CEBF6 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
+		7EEB10C01E8D348D005CEBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
+		8BBA2D671E8D36F100254A67 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
+		8BBA2D691E8D38BF00254A67 /* ServerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerModel.swift; sourceTree = "<group>"; };
 		FE62A40A1E8BFCE2005594B6 /* The Best Thing In The World.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Best Thing In The World.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE62A40F1E8BFCE2005594B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,8 +48,6 @@
 		FE62A4011E8BFCE2005594B6 = {
 			isa = PBXGroup;
 			children = (
-				7EEB10BE1E8D3469005CEBF6 /* Item.swift */,
-				7EEB10C01E8D348D005CEBF6 /* User.swift */,
 				FE62A40C1E8BFCE2005594B6 /* The Best Thing In The World */,
 				FE62A40B1E8BFCE2005594B6 /* Products */,
 			);
@@ -62,6 +64,8 @@
 		FE62A40C1E8BFCE2005594B6 /* The Best Thing In The World */ = {
 			isa = PBXGroup;
 			children = (
+				7EEB10BE1E8D3469005CEBF6 /* Item.swift */,
+				7EEB10C01E8D348D005CEBF6 /* User.swift */,
 				FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */,
 				FE62A41F1E8C0250005594B6 /* ContentView.swift */,
 				FE62A40F1E8BFCE2005594B6 /* ViewController.swift */,
@@ -69,6 +73,8 @@
 				FE62A4141E8BFCE2005594B6 /* Assets.xcassets */,
 				FE62A4161E8BFCE2005594B6 /* LaunchScreen.storyboard */,
 				FE62A4191E8BFCE2005594B6 /* Info.plist */,
+				8BBA2D671E8D36F100254A67 /* ServerService.swift */,
+				8BBA2D691E8D38BF00254A67 /* ServerModel.swift */,
 			);
 			path = "The Best Thing In The World";
 			sourceTree = "<group>";
@@ -147,7 +153,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EEB10BF1E8D3469005CEBF6 /* Item.swift in Sources */,
+				8BBA2D6A1E8D38BF00254A67 /* ServerModel.swift in Sources */,
 				FE62A4101E8BFCE2005594B6 /* ViewController.swift in Sources */,
+				8BBA2D681E8D36F100254A67 /* ServerService.swift in Sources */,
 				FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */,
 				7EEB10C11E8D348D005CEBF6 /* User.swift in Sources */,
 				FE62A4201E8C0250005594B6 /* ContentView.swift in Sources */,
