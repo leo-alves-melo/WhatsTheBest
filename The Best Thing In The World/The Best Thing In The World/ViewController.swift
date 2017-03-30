@@ -25,6 +25,10 @@ class ViewController: UIViewController, ItemPicker {
     
     @IBOutlet weak var starView: StarView!
     
+    private var itemRight = Item()
+    
+    private var itemLeft = Item()
+    
     var initialTouchLocation:CGPoint!
     
     override func viewDidLoad() {
@@ -76,10 +80,14 @@ class ViewController: UIViewController, ItemPicker {
         if leftChoice.frame.contains(point) {
             print("Escolheu esquerda!")
             animateStar()
+            itemLeft.increaseQtdVotes()
+            changeItems()
         }
         else if rightChoice.frame.contains(point) {
             print("Escolheu direita!")
             animateStar()
+            itemRight.increaseQtdVotes()
+            changeItems()
         }
     }
     
@@ -110,6 +118,12 @@ class ViewController: UIViewController, ItemPicker {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func changeItems() {
+        
+    
+        
     }
 }
 
