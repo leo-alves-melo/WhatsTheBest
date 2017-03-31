@@ -35,7 +35,7 @@ class GameController: UIViewController, ItemPicker {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        starView.setDelegate(delegate: self)
+        //starView.setDelegate(delegate: self)
         
         var server = ServerService()
         server.getRandomItem(1)
