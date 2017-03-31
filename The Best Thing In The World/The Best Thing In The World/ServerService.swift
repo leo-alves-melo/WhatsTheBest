@@ -13,12 +13,29 @@ class ServerService {
     private let urlServer = "http://www.meuserver.com/"
     private var user:User? = nil
     
+    private func readItemInServer(_ numberItems:Int) -> String? {
+        return Bundle.main.path(forResource: "DB", ofType: nil)
+    }
+    
+    private func updateItemInServer(_ item:Item) -> Bool {
+        
+        let json:[String:Any] =
+        [
+            "name":"s"
+                
+            
+        ]
+        
+        return false
+        
+    }
+    
     func getRandomItem(_ numberItens:Int) -> [Item]? {
         
         var itemsList:[Item] = []
         
         //Read File path
-        if let filepath = Bundle.main.path(forResource: "DB", ofType: nil) {
+        if let filepath = readItemInServer(numberItens) {
             
             do {
                 
@@ -30,10 +47,10 @@ class ServerService {
                 
                 if let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [[String:Any]] {
                     
-                    if(numberItens < parsedData.count) {
+                    if(numberItens <= parsedData.count) {
                         for json in 0..<numberItens {
                             
-                            print("parsedData:\(parsedData[json])")
+                            
                             
                             itemsList.append(Item(text: parsedData[json]["subtitle"] as! String, image: parsedData[json]["imageLink"] as! String))
                             
@@ -84,6 +101,11 @@ class ServerService {
     }
     
     func voteInAnItem(_ item:Item) -> Bool {
+        
+        item.increaseQtdVotes()
+        
+        
+        
         return false
     }
 }

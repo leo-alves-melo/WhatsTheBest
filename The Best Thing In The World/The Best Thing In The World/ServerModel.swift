@@ -14,3 +14,10 @@ enum RankingType:Int {
     case lastWeek = 2
     case today = 3
 }
+
+enum RequestType:String {
+    case updateItem = "updateItem"
+    case uploadItem = "uploadItem"
+    case getItem = "getItem"
+    
+}
