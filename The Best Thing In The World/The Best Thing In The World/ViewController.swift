@@ -36,6 +36,9 @@ class ViewController: UIViewController, ItemPicker {
         
         starView.setDelegate(delegate: self)
         
+        var server = ServerService()
+        server.getRandomItem(1)
+        
         leftChoice.tag = 1
         rightChoice.tag = 2
         
