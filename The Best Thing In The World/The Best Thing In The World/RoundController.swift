@@ -39,6 +39,9 @@ class RoundController {
     func increaseVoteItem (_ item:Item)
     {
         
+        serverService.voteInAnItem(item)
+       
+        //acessar servidor e incrementar qtd de votos do item recebido.
         
     }
     
