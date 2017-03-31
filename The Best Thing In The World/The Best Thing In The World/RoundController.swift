@@ -36,5 +36,13 @@ class RoundController {
         }
     }
     
+    func increaseVoteItem (_ item:Item)
+    {
+        
+        
+    }
+    
+    
+    
 
 }
