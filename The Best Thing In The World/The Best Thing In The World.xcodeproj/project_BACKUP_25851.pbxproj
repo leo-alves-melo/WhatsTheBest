@@ -14,9 +14,7 @@
 		7EEB10CF1E8D7689005CEBF6 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB10CE1E8D7689005CEBF6 /* LinkedList.swift */; };
 		8BBA2D681E8D36F100254A67 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA2D671E8D36F100254A67 /* ServerService.swift */; };
 		8BBA2D6A1E8D38BF00254A67 /* ServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA2D691E8D38BF00254A67 /* ServerModel.swift */; };
-		DE9376C31E8D7D3D00D7827C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */; };
 		8BBA2D6D1E8E7C5B00254A67 /* DB in Resources */ = {isa = PBXBuildFile; fileRef = 8BBA2D6C1E8E7C5B00254A67 /* DB */; };
-		DE9376C91E8D806800D7827C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */; };
 		FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */; };
 		FE62A4101E8BFCE2005594B6 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40F1E8BFCE2005594B6 /* GameController.swift */; };
 		FE62A4131E8BFCE2005594B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE62A4111E8BFCE2005594B6 /* Main.storyboard */; };
@@ -34,9 +32,7 @@
 		7EEB10CE1E8D7689005CEBF6 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		8BBA2D671E8D36F100254A67 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
 		8BBA2D691E8D38BF00254A67 /* ServerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerModel.swift; sourceTree = "<group>"; };
-		DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		8BBA2D6C1E8E7C5B00254A67 /* DB */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DB; sourceTree = "<group>"; };
-		DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		FE62A40A1E8BFCE2005594B6 /* The Best Thing In The World.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Best Thing In The World.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE62A40F1E8BFCE2005594B6 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
@@ -117,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				FE719AD71E8D5460000943B9 /* StarView.swift */,
-				DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */,
 				FE62A41F1E8C0250005594B6 /* ContentView.swift */,
 			);
 			name = View;
@@ -126,9 +121,12 @@
 		FE719ADB1E8D564C000943B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				FE62A40F1E8BFCE2005594B6 /* GameController.swift */,
 				8BBA2D671E8D36F100254A67 /* ServerService.swift */,
-				DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */,
+=======
+				FE62A40F1E8BFCE2005594B6 /* ViewController.swift */,
+>>>>>>> dcc9a36d4ecaf7d939023680a1ffe84e6ad15529
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -211,7 +209,6 @@
 				8BBA2D6A1E8D38BF00254A67 /* ServerModel.swift in Sources */,
 				FE62A4101E8BFCE2005594B6 /* GameController.swift in Sources */,
 				8BBA2D681E8D36F100254A67 /* ServerService.swift in Sources */,
-				DE9376C91E8D806800D7827C /* RankingTableViewCell.swift in Sources */,
 				FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */,
 				7EEB10CD1E8D764F005CEBF6 /* Queue.swift in Sources */,
 				7EEB10C11E8D348D005CEBF6 /* User.swift in Sources */,
@@ -219,7 +216,6 @@
 				7EEB10CB1E8D7542005CEBF6 /* RoundController.swift in Sources */,
 				7EEB10CF1E8D7689005CEBF6 /* LinkedList.swift in Sources */,
 				FE62A4201E8C0250005594B6 /* ContentView.swift in Sources */,
-				DE9376C31E8D7D3D00D7827C /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

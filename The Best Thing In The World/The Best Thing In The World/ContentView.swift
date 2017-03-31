@@ -10,6 +10,8 @@ import UIKit
 
 class ContentView : UIView {
     
+    
+    
     //Define your initialisers here
     private var initialTouchLocation:CGPoint?
     
