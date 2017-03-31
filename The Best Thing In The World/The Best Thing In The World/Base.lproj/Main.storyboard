@@ -12,7 +12,7 @@
         <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="The_Best_Thing_In_The_World" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GameController" customModule="The_Best_Thing_In_The_World" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -35,6 +35,12 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tDq-VX-4QL" userLabel="right" customClass="ContentView" customModule="The_Best_Thing_In_The_World" customModuleProvider="target">
                                 <rect key="frame" x="194" y="144" width="165" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i87-QC-t26">
+                                        <rect key="frame" x="0.0" y="0.0" width="165" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A6N-HM-yNt">
@@ -78,7 +84,9 @@
                     <tabBarItem key="tabBarItem" title="Item" id="uJ2-fd-GJQ"/>
                     <connections>
                         <outlet property="leftChoice" destination="0gB-ox-mx4" id="ycr-QO-ULf"/>
+                        <outlet property="leftImage" destination="bCz-Bm-gEE" id="aZu-Sx-Lgg"/>
                         <outlet property="rightChoice" destination="tDq-VX-4QL" id="4Kp-Kd-8DR"/>
+                        <outlet property="rightImage" destination="i87-QC-t26" id="PAr-Oe-yDx"/>
                         <outlet property="starView" destination="Kms-mW-uBW" id="BNY-Vq-Ld2"/>
                     </connections>
                 </viewController>

@@ -9,5 +9,40 @@
 import Foundation
 
 
+class RoundController {
 
 
+    private var serverService = ServerService()
+
+    private var queueItem = Queue<Item>()
+
+    func getItemsFromServer() {
+        
+        if let items = serverService.getRandomItem(10) {
+            for i in 0...items.count-1 {
+                self.queueItem.enqueue(items[i])
+            }
+        }
+    }
+    
+    func changeItem () -> Item
+    {
+        if let item:Item = self.queueItem.dequeue() {
+            return item
+        }
+        else {
+            var item = Item(text: "empty", image: "empty")
+            return item
+        }
+    }
+    
+    func increaseVoteItem (_ item:Item)
+    {
+        
+        
+    }
+    
+    
+    
+
+}

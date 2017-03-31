@@ -121,8 +121,12 @@
 		FE719ADB1E8D564C000943B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				FE62A40F1E8BFCE2005594B6 /* GameController.swift */,
 				8BBA2D671E8D36F100254A67 /* ServerService.swift */,
+=======
+				FE62A40F1E8BFCE2005594B6 /* ViewController.swift */,
+>>>>>>> dcc9a36d4ecaf7d939023680a1ffe84e6ad15529
 			);
 			name = Controller;
 			sourceTree = "<group>";
