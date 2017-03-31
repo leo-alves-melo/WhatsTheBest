@@ -26,13 +26,15 @@ class ServerService {
                 
                 
                 
-                let parsedData = try JSONSerialization.jsonObject(with: data!, options: [])
+                let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any]
                 
-               // for json in parsedData {
+            
+                
+               for json in parsedData! {
                     
-                  //  print("parsedData:\(json)")
+                  print("parsedData:\(json)")
                     
-                //}
+                }
                 
                 //let data =
                 

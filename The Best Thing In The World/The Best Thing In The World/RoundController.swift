@@ -11,6 +11,7 @@ import Foundation
 
 class RoundController {
 
+
     private var serverService = ServerService()
 
     private var queueItem = Queue<Item>()
@@ -30,12 +31,17 @@ class RoundController {
             return item
         }
         else {
-            return Item(text: "empty", image: "empty")
+            var item = Item(text: "empty", image: "empty")
+            return item
         }
     }
     
     func increaseVoteItem (_ item:Item)
     {
+        
+        serverService.voteInAnItem(item)
+       
+        //acessar servidor e incrementar qtd de votos do item recebido.
         
     }
     
