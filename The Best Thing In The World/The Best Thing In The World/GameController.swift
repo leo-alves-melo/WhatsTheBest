@@ -17,6 +17,10 @@ class GameController: UIViewController, ItemPicker {
 
     private var leftViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     private var rightViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
+    private var roundController = RoundController()
+    private var itemRight = Item()
+    private var itemLeft = Item()
+
     
     @IBOutlet weak var leftChoice: ContentView!
     @IBOutlet weak var rightChoice: ContentView!
@@ -27,6 +31,7 @@ class GameController: UIViewController, ItemPicker {
     
     var initialTouchLocation:CGPoint!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,6 +50,8 @@ class GameController: UIViewController, ItemPicker {
         rightChoice.addGestureRecognizer(tapRight)
         //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
+        roundController.getItemsFromServer()
+    
     }
     
     func panAction(rec: UIPanGestureRecognizer) {
@@ -76,10 +83,13 @@ class GameController: UIViewController, ItemPicker {
         if leftChoice.frame.contains(point) {
             print("Escolheu esquerda!")
             animateChoice(leftChoice)
+            roundController.increaseVoteItem(itemLeft)
         }
         else if rightChoice.frame.contains(point) {
             print("Escolheu direita!")
             animateChoice(rightChoice)
+            roundController.increaseVoteItem(itemRight)
+
         }
     }
     
@@ -108,6 +118,17 @@ class GameController: UIViewController, ItemPicker {
         
         
         
+    }
+    
+    func changeItens()
+    {
+        itemRight = roundController.changeItem()
+        
+        rightImage.image = UIImage(named: itemRight.getIdImage())
+        
+        itemLeft = roundController.changeItem()
+        
+        rightImage.image = UIImage(named: itemLeft.getIdImage())
     }
     
     override func didReceiveMemoryWarning() {
