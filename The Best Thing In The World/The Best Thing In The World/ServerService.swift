@@ -15,6 +15,8 @@ class ServerService {
     
     func getRandomItem(_ numberItens:Int) -> [Item]? {
         
+        var itemsList:[Item] = []
+        
         //Read File path
         if let filepath = Bundle.main.path(forResource: "DB", ofType: nil) {
             
@@ -26,21 +28,28 @@ class ServerService {
                 
                 
                 
-                let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any]
-                
-            
-                
-               for json in parsedData! {
+                if let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [[String:Any]] {
                     
-                  print("parsedData:\(json)")
+                    if(numberItens < parsedData.count) {
+                        for json in 0..<numberItens {
+                            
+                            print("parsedData:\(parsedData[json])")
+                            
+                            itemsList.append(Item(text: parsedData[json]["subtitle"] as! String, image: parsedData[json]["imageLink"] as! String))
+                            
+                            
+                        }
+                    }
+                    else {
+                        print("A lista contém apenas \(parsedData.count) elementos, mas você pediu \(numberItens)")
+                    }
+                    
+                    
+                    
                     
                 }
                 
-                //let data =
-                
-                
-                //let parsedData = try JSONSerialization.jsonObject(with: lines[0], options: []) as? [String: Any]
-
+               
             }
             catch {
                 print("catch")
@@ -52,7 +61,7 @@ class ServerService {
             print("else")
             
         }
-        return nil
+        return itemsList
     }
     
     func getRanking(type:RankingType) -> [Item]? {
