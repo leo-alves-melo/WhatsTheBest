@@ -99,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				7EEB10C01E8D348D005CEBF6 /* User.swift */,
-				8BBA2D671E8D36F100254A67 /* ServerService.swift */,
 				7EEB10BE1E8D3469005CEBF6 /* Item.swift */,
 				8BBA2D691E8D38BF00254A67 /* ServerModel.swift */,
 				7EEB10CA1E8D7542005CEBF6 /* RoundController.swift */,
@@ -121,8 +120,8 @@
 		FE719ADB1E8D564C000943B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FE62A40F1E8BFCE2005594B6 /* GameController.swift */,
 				8BBA2D671E8D36F100254A67 /* ServerService.swift */,
+				FE62A40F1E8BFCE2005594B6 /* GameController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

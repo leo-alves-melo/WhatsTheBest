@@ -11,7 +11,6 @@ import Foundation
 
 class RoundController {
 
-
     private var serverService = ServerService()
 
     private var queueItem = Queue<Item>()
@@ -31,14 +30,12 @@ class RoundController {
             return item
         }
         else {
-            var item = Item(text: "empty", image: "empty")
-            return item
+            return Item(text: "empty", image: "empty")
         }
     }
     
     func increaseVoteItem (_ item:Item)
     {
-        
         
     }
     
