@@ -13,16 +13,16 @@ protocol ItemPicker {
     func pickItem(choice:ContentView)
 }
 
-class ViewController: UIViewController, ItemPicker {
+class GameController: UIViewController, ItemPicker {
 
     private var leftViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     private var rightViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     
-    private 
-    
     @IBOutlet weak var leftChoice: ContentView!
     @IBOutlet weak var rightChoice: ContentView!
     
+    @IBOutlet weak var leftImage: UIImageView!
+    @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var starView: StarView!
     
     var initialTouchLocation:CGPoint!
@@ -30,15 +30,13 @@ class ViewController: UIViewController, ItemPicker {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        starView.setDelegate(delegate: self)
-        
         leftChoice.tag = 1
         rightChoice.tag = 2
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         pan.maximumNumberOfTouches = 1
         pan.minimumNumberOfTouches = 1
-        //starView.addGestureRecognizer(pan)
+        starView.addGestureRecognizer(pan)
         
         let tapLeft = UITapGestureRecognizer(target: self, action: #selector(itemTapAction))
         leftChoice.addGestureRecognizer(tapLeft)
@@ -51,16 +49,18 @@ class ViewController: UIViewController, ItemPicker {
     
     func panAction(rec: UIPanGestureRecognizer) {
         
-        let p:CGPoint = rec.location(in: self.view)
-        
         switch rec.state {
             case .began:
                 print("began")
-                initialTouchLocation = rec.location(ofTouch: 0, in: starView)
+                fallthrough
             case .changed:
-                starView.center = CGPoint(x: p.x, y: p.y)
+                
+                let translation = rec.translation(in: self.view)
+                // note: 'view' is optional and need to be unwrapped
+                starView.center = CGPoint(x: starView.center.x + translation.x, y: starView.center.y + translation.y)
+                rec.setTranslation(CGPoint.zero, in: self.view)
             case .ended:
-                checkIfItemPicked(point: p)
+                checkIfItemPicked(point: starView.center)
             
             default: break
         }
@@ -75,11 +75,11 @@ class ViewController: UIViewController, ItemPicker {
         print(point)
         if leftChoice.frame.contains(point) {
             print("Escolheu esquerda!")
-            animateStar()
+            animateChoice(leftChoice)
         }
         else if rightChoice.frame.contains(point) {
             print("Escolheu direita!")
-            animateStar()
+            animateChoice(rightChoice)
         }
     }
     
@@ -87,24 +87,27 @@ class ViewController: UIViewController, ItemPicker {
         print("Selecionando \(choice.tag)")
     }
     
-    func animateStar() {
+    func animateChoice(_ choiceView: ContentView) {
+    
+        let d = 0.5
         
-        /*CATransaction.begin()
-         CATransaction.setCompletionBlock({
-         
-         })*/
+        UIView.animate(withDuration: d,
+                       delay: 0,
+                       //options: UIViewAnimationOptions.curveEaseIn,
+                       animations: {
+                            self.starView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                       }, completion: nil)
         
-        let rotation = CABasicAnimation(keyPath: "transform.rotation")
-        rotation.fromValue = 0.0
-        rotation.duration = 0.5
-        rotation.toValue = 2 * CGFloat.pi
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.25,
+                       //options: UIViewAnimationOptions.curveEaseOut,
+                       animations: {
+                            self.starView.transform = CGAffineTransform(rotationAngle: 2 * CGFloat.pi)
+                       }, completion: nil)
         
-        /*let growth = CABasicAnimation(keyPath: "bounds.rotation")
-         rotation.fromValue = 0.0
-         rotation.duration = 0.5
-         rotation.toValue = 2 * CGFloat.pi*/
         
-        starView.layer.add(rotation, forKey: nil)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

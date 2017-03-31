@@ -12,7 +12,7 @@
 		8BBA2D681E8D36F100254A67 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA2D671E8D36F100254A67 /* ServerService.swift */; };
 		8BBA2D6A1E8D38BF00254A67 /* ServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA2D691E8D38BF00254A67 /* ServerModel.swift */; };
 		FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */; };
-		FE62A4101E8BFCE2005594B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40F1E8BFCE2005594B6 /* ViewController.swift */; };
+		FE62A4101E8BFCE2005594B6 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40F1E8BFCE2005594B6 /* GameController.swift */; };
 		FE62A4131E8BFCE2005594B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE62A4111E8BFCE2005594B6 /* Main.storyboard */; };
 		FE62A4151E8BFCE2005594B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE62A4141E8BFCE2005594B6 /* Assets.xcassets */; };
 		FE62A4181E8BFCE2005594B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE62A4161E8BFCE2005594B6 /* LaunchScreen.storyboard */; };
@@ -27,7 +27,7 @@
 		8BBA2D691E8D38BF00254A67 /* ServerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerModel.swift; sourceTree = "<group>"; };
 		FE62A40A1E8BFCE2005594B6 /* The Best Thing In The World.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Best Thing In The World.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FE62A40F1E8BFCE2005594B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FE62A40F1E8BFCE2005594B6 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		FE62A4121E8BFCE2005594B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE62A4141E8BFCE2005594B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE62A4171E8BFCE2005594B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		FE719ADB1E8D564C000943B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FE62A40F1E8BFCE2005594B6 /* ViewController.swift */,
+				FE62A40F1E8BFCE2005594B6 /* GameController.swift */,
 				8BBA2D671E8D36F100254A67 /* ServerService.swift */,
 			);
 			name = Controller;
@@ -181,7 +181,7 @@
 			files = (
 				7EEB10BF1E8D3469005CEBF6 /* Item.swift in Sources */,
 				8BBA2D6A1E8D38BF00254A67 /* ServerModel.swift in Sources */,
-				FE62A4101E8BFCE2005594B6 /* ViewController.swift in Sources */,
+				FE62A4101E8BFCE2005594B6 /* GameController.swift in Sources */,
 				8BBA2D681E8D36F100254A67 /* ServerService.swift in Sources */,
 				FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */,
 				7EEB10C11E8D348D005CEBF6 /* User.swift in Sources */,
