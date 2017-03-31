@@ -13,7 +13,7 @@ class ServerService {
     private let urlServer = "http://www.meuserver.com/"
     private var user:User? = nil
     
-    func getRandomItem() -> Item? {
+    func getRandomItem(_ numberItens:Int) -> [Item]? {
         return nil
     }
     
@@ -36,3 +36,4 @@ class ServerService {
         return false
     }
 }
+
