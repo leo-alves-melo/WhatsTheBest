@@ -25,6 +25,8 @@ class GameController: UIViewController, ItemPicker {
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var starView: StarView!
     
+    private var starStartingCenter:CGPoint!
+    
     var initialTouchLocation:CGPoint!
     
     override func viewDidLoad() {
@@ -32,6 +34,7 @@ class GameController: UIViewController, ItemPicker {
         
         leftChoice.tag = 1
         rightChoice.tag = 2
+        starStartingCenter = starView.center
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         pan.maximumNumberOfTouches = 1
@@ -89,22 +92,37 @@ class GameController: UIViewController, ItemPicker {
     
     func animateChoice(_ choiceView: ContentView) {
     
-        let d = 0.5
+        let d = 1.0
         
         UIView.animate(withDuration: d,
                        delay: 0,
                        //options: UIViewAnimationOptions.curveEaseIn,
                        animations: {
                             self.starView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                            self.starView.center = choiceView.center
+                            self.starView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
                        }, completion: nil)
         
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.25,
+        UIView.animate(withDuration: d,
+                       delay: d/3,
                        //options: UIViewAnimationOptions.curveEaseOut,
                        animations: {
                             self.starView.transform = CGAffineTransform(rotationAngle: 2 * CGFloat.pi)
-                       }, completion: nil)
+        }, completion: {_ in UIView.animate(withDuration: 0.5, delay: 0, animations: {
+            self.starView.center = self.starStartingCenter
+            self.starView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        })})
         
+        UIView.animate(withDuration: d,
+                       delay: 0,
+                       //options: UIViewAnimationOptions.curveEaseOut,
+                       animations: {
+                            choiceView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                            choiceView.backgroundColor = UIColor.blue
+        }, completion: {_ in UIView.animate(withDuration: d, animations: {
+            choiceView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            choiceView.backgroundColor = UIColor.white
+        })})
         
         
         
