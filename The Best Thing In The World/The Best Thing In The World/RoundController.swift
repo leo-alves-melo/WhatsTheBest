@@ -18,10 +18,12 @@ class RoundController {
 
     func getItemsFromServer() {
         
-        if let items = serverService.getRandomItem(5) {
-            for i in 0...items.count-1 {
-                self.queueItem.enqueue(items[i])
-            }
+        if let items = serverService.getRandomItem(2) {
+            
+            let item = Item(id: 1234, subtitle: "batata", imageLink: "batata", score: 10, owner: User(), date: "19/09/2013")
+            //for i in 0...items.count-1 {
+                self.queueItem.enqueue(item)
+            //}
         }
     }
     
@@ -31,7 +33,7 @@ class RoundController {
             return item
         }
         else {
-            var item = Item(id: 0, subtitle: "empty", imageLink: "empty", score: 0, owner: User(), date: "empty")
+            var item = Item(id: 0, subtitle: "empty", imageLink: "empty", score: 0, owner: User(), date: "19/09/2013")
             return item
         }
     }
