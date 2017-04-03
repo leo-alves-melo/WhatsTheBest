@@ -153,11 +153,11 @@ class GameController: UIViewController, ItemPicker {
     {
         itemRight = roundController.changeItem()
         
-        rightImage.image = UIImage(named: itemRight.getIdImage())
+        rightImage.image = UIImage(named: itemRight.getImageLink())
         
         itemLeft = roundController.changeItem()
         
-        rightImage.image = UIImage(named: itemLeft.getIdImage())
+        rightImage.image = UIImage(named: itemLeft.getImageLink())
     }
     
     func reportAction(sender: UIButton) {

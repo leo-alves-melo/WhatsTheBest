@@ -12,11 +12,12 @@ import Foundation
 
 class User {
     
-    var name:String
-    var gender:String
-    var age:Int
-    var profile:String
-    var qtdPoints:Int
+    private var id: Int
+    private var name:String
+    private var gender:String
+    private var age:Int
+    private var profile:String
+    private var qtdPoints:Int
     
     
     init()
@@ -26,6 +27,13 @@ class User {
         age = Int()
         profile = String()
         qtdPoints = 0
+        id = 0
+    }
+    
+    func getId (user : User) -> Int
+    {
+        
+        return self.id
     }
 }
 

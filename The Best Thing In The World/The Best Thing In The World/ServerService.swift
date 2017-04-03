@@ -26,7 +26,7 @@ class ServerService {
         
         let json:[String:Any] =
         [
-            "ID":9, "subtitle":"a", "user":1, "score":1, "date":"a", "imageLink": item.getIdImage()
+            "ID":9, "subtitle":"a", "user":1, "score":1, "date":"a", "imageLink": item.getImageLink()
                 
             
         ]
@@ -57,7 +57,9 @@ class ServerService {
                             
                             
                             
-                            itemsList.append(Item(text: parsedData[json]["subtitle"] as! String, image: parsedData[json]["imageLink"] as! String))
+                           // itemsList.append(Item(text: parsedData[json]["subtitle"] as! String, image: parsedData[json]["imageLink"] as! String))
+                            
+                            itemsList.append(Item(subtitle: parsedData[json]["subtitle"] as! String, imageLink: parsedData[json]["imageLink"] as! String, score: parsedData[json]["score"] as! Int))
                             
                             
                         }
