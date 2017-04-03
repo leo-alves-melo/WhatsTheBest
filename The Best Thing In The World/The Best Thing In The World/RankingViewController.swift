@@ -21,7 +21,9 @@ class RankingViewController: UIViewController, UITableViewDataSource , UITableVi
         
 //        listItems = ServerService().getRanking(type: RankingType.allTime.rawValue)!
         
-        let item = Item(text: "star", image: "star")
+        let user = User(id: 1234, name: "José", gender: "f", age: 19, profile: "bla bla bla", score: 300)
+        let item = Item(id: 1001, subtitle: "Star", imageLink: "star", score: 2398402, owner: user, date: "19/08/2016")
+
         listItems = [item, item, item, item]
 
     }
@@ -31,9 +33,10 @@ class RankingViewController: UIViewController, UITableViewDataSource , UITableVi
         
 //        listItems = ServerService().getRanking(type: tag)!
         
+        let user = User(id: 1234, name: "Ana", gender: "f", age: 19, profile: "bla bla bla", score: 566)
+        let item = Item(id: 1001, subtitle: "Estrela", imageLink: "star", score: 10000, owner: user, date: "19/08/2016")
         
-        let item = Item(text: "Estrela", image: "Estrela")
-        listItems = [item, item, item]
+        listItems = [item, item, item, item]
         
         tableView.reloadData()
     }
@@ -51,10 +54,10 @@ class RankingViewController: UIViewController, UITableViewDataSource , UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cellRanking", for: indexPath) as! RankingTableViewCell
         
-        cell.imageThing.image = UIImage(named: self.listItems[indexPath.row].getIdImage())
-        cell.thingName.text = self.listItems[indexPath.row].getText()
-        cell.userName.text = "name User"
-        cell.points.text = "\(self.listItems[indexPath.row].getQtdVotes()) points"
+        cell.imageThing.image = UIImage(named: self.listItems[indexPath.row].getImageLink())
+        cell.thingName.text = self.listItems[indexPath.row].getSubtitle()
+        cell.userName.text = self.listItems[indexPath.row].getOwner().getName()
+        cell.points.text = "\(self.listItems[indexPath.row].getScore()) points"
         
         return cell
     }

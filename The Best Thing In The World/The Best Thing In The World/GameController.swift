@@ -18,9 +18,11 @@ class GameController: UIViewController, ItemPicker {
     private var leftViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     private var rightViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     private var roundController = RoundController()
+    
     private var itemRight = Item()
     private var itemLeft = Item()
-
+    
+    private var allowsVoting = true
     
     @IBOutlet weak var leftChoice: ContentView!
     @IBOutlet weak var rightChoice: ContentView!
@@ -29,17 +31,19 @@ class GameController: UIViewController, ItemPicker {
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var starView: StarView!
     
+    private var starStartingCenter:CGPoint!
+    
     var initialTouchLocation:CGPoint!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         var server = ServerService()
         server.getRandomItem(1)
         
         leftChoice.tag = 1
         rightChoice.tag = 2
+        starStartingCenter = starView.center
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         pan.maximumNumberOfTouches = 1
@@ -54,6 +58,7 @@ class GameController: UIViewController, ItemPicker {
         //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
+        changeItems()
     
     }
     
@@ -61,12 +66,10 @@ class GameController: UIViewController, ItemPicker {
         
         switch rec.state {
             case .began:
-                print("began")
                 fallthrough
             case .changed:
-                
                 let translation = rec.translation(in: self.view)
-                // note: 'view' is optional and need to be unwrapped
+
                 starView.center = CGPoint(x: starView.center.x + translation.x, y: starView.center.y + translation.y)
                 rec.setTranslation(CGPoint.zero, in: self.view)
             case .ended:
@@ -82,17 +85,20 @@ class GameController: UIViewController, ItemPicker {
     }
     
     func checkIfItemPicked(point: CGPoint) /*-> Item? */{
-        print(point)
+        
+        guard allowsVoting else { return }
+        
         if leftChoice.frame.contains(point) {
+            allowsVoting = false
             print("Escolheu esquerda!")
             animateChoice(leftChoice)
             roundController.increaseVoteItem(itemLeft)
         }
         else if rightChoice.frame.contains(point) {
+            allowsVoting = false
             print("Escolheu direita!")
             animateChoice(rightChoice)
             roundController.increaseVoteItem(itemRight)
-
         }
     }
     
@@ -102,36 +108,69 @@ class GameController: UIViewController, ItemPicker {
     
     func animateChoice(_ choiceView: ContentView) {
     
-        let d = 0.5
+        let d = 1.0
         
         UIView.animate(withDuration: d,
                        delay: 0,
                        //options: UIViewAnimationOptions.curveEaseIn,
                        animations: {
                             self.starView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                            self.starView.center = choiceView.center
+                            self.starView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
                        }, completion: nil)
         
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.25,
+        UIView.animate(withDuration: d,
+                       delay: d/3,
                        //options: UIViewAnimationOptions.curveEaseOut,
                        animations: {
-                            self.starView.transform = CGAffineTransform(rotationAngle: 2 * CGFloat.pi)
-                       }, completion: nil)
+                            self.starView.transform = CGAffineTransform(rotationAngle: 3 * CGFloat.pi)
+        }, completion: {_ in UIView.animate(withDuration: 0.5, delay: 0, animations: {
+            self.starView.center = self.starStartingCenter
+            self.starView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        })})
         
+        UIView.animate(withDuration: d,
+                       delay: 0,
+                       //options: UIViewAnimationOptions.curveEaseOut,
+                       animations: {
+                            choiceView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                            choiceView.backgroundColor = UIColor.blue
+                       }, completion: {_ in UIView.animate(withDuration: d,
+                                                           animations:{
+                                                            choiceView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                                                            choiceView.backgroundColor = UIColor.white
+                                                        }, completion: { _ in self.updateItems()
+                        }) })
         
         
         
     }
     
-    func changeItens()
+    func updateItems() {
+        allowsVoting = true
+        changeItems()
+    }
+    
+    func changeItems()
     {
         itemRight = roundController.changeItem()
         
-        rightImage.image = UIImage(named: itemRight.getIdImage())
+        rightImage.image = UIImage(named: itemRight.getImageLink())
+        
+        print(itemRight.getImageLink())
         
         itemLeft = roundController.changeItem()
         
-        rightImage.image = UIImage(named: itemLeft.getIdImage())
+        leftImage.image = UIImage(named: itemLeft.getImageLink())
+    }
+    
+    func reportAction(sender: UIButton) {
+        print("i report u")
+    }
+    
+    func passAction(sender: UIButton) {
+        guard allowsVoting else { return }
+        changeItems()
     }
     
     override func didReceiveMemoryWarning() {

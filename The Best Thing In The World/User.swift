@@ -10,11 +10,12 @@ import Foundation
 
 class User {
     
-    var name:String
-    var gender:String
-    var age:Int
-    var profile:String
-    var qtdPoints:Int
+    private var id: Int
+    private var name:String
+    private var gender:String
+    private var age:Int
+    private var profile:String
+    private var score:Int
     
     init()
     {
@@ -22,15 +23,31 @@ class User {
         gender = String()
         age = Int()
         profile = String()
-        qtdPoints = 0
+        id = Int()
+        score = Int()
+    }
+    
+    init (id: Int, name: String, gender: String, age: Int, profile:String, score:Int)
+    {
+        self.id = id
+        self.name = name
+        self.gender = gender
+        self.age = age
+        self.profile = profile
+        self.score = score
+    }
+    
+    func getId (user : User) -> Int
+    {
+        return self.id
     }
     
     func getName() -> String {
         return self.name
     }
     
-    func getQtdPoints() -> Int {
-        return self.qtdPoints
+    func getScore() -> Int {
+        return self.score
     }
 }
 

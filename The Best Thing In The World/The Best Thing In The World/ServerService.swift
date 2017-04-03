@@ -11,12 +11,36 @@ import Foundation
 class ServerService {
     
     private let urlServer = "http://www.meuserver.com/"
-    private var user:User? = nil
+    private var user:User? = User(id: 1, name: "teste", gender: "F", age: 11, profile: "normal", score: 90)
+    
+    private func readItemInServer(_ numberItems:Int) -> String? {
+        return Bundle.main.path(forResource: "DB", ofType: nil)
+    }
+    
+    private func sendToServer(_ json:[String:Any]) -> Bool {
+        
+        return false
+    }
+    
+    public func updateItemInServer(_ item:Item) -> Bool {
+        
+        let json:[String:Any] =
+        [
+            "ID":9, "subtitle":"a", "user":1, "score":1, "date":"a", "imageLink": item.getImageLink()
+                
+            
+        ]
+        
+        return sendToServer(json)
+        
+    }
     
     func getRandomItem(_ numberItens:Int) -> [Item]? {
         
+        var itemsList:[Item] = []
+        
         //Read File path
-        if let filepath = Bundle.main.path(forResource: "DB", ofType: nil) {
+        if let filepath = readItemInServer(numberItens) {
             
             do {
                 
@@ -26,21 +50,30 @@ class ServerService {
                 
                 
                 
-                let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any]
-                
-            
-                
-               for json in parsedData! {
+                if let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [[String:Any]] {
                     
-                  print("parsedData:\(json)")
+                    if(numberItens <= parsedData.count) {
+                        for json in 0..<numberItens {
+                            
+                            
+                            
+                           // itemsList.append(Item(text: parsedData[json]["subtitle"] as! String, image: parsedData[json]["imageLink"] as! String))
+                            
+                            itemsList.append(Item(id: parsedData[json]["ID"] as! Int, subtitle: parsedData[json]["subtitle"] as! String, imageLink: parsedData[json]["imageLink"] as! String, score: parsedData[json]["score"] as! Int, owner: self.user!, date: parsedData[json]["date"] as! String))
+                            
+                            
+                        }
+                    }
+                    else {
+                        print("A lista contém apenas \(parsedData.count) elementos, mas você pediu \(numberItens)")
+                    }
+                    
+                    
+                    
                     
                 }
                 
-                //let data =
-                
-                
-                //let parsedData = try JSONSerialization.jsonObject(with: lines[0], options: []) as? [String: Any]
-
+               
             }
             catch {
                 print("catch")
@@ -52,7 +85,7 @@ class ServerService {
             print("else")
             
         }
-        return nil
+        return itemsList
     }
     
     func getRanking(type:RankingType) -> [Item]? {
@@ -75,6 +108,11 @@ class ServerService {
     }
     
     func voteInAnItem(_ item:Item) -> Bool {
+        
+        item.increaseQtdVotes()
+        
+        
+        
         return false
     }
 }
