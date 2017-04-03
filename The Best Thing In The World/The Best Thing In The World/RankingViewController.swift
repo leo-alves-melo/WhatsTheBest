@@ -8,14 +8,34 @@
 
 import UIKit
 
-class RankingViewController: UIViewController, UITableViewDataSource , UITableViewDelegate{
+class RankingViewController: UIViewController, UITableViewDataSource , UITableViewDelegate, UITabBarDelegate{
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tabBar: UITabBar!
+    
+    var listItems:[Item] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBar.selectedItem = self.tabBar.items![0]
         
-        // Do any additional setup after loading the view.
+//        listItems = ServerService().getRanking(type: RankingType.allTime.rawValue)!
+        
+        let item = Item(text: "star", image: "star")
+        listItems = [item, item, item, item]
+
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        let tag = tabBar.selectedItem!.tag
+        
+//        listItems = ServerService().getRanking(type: tag)!
+        
+        
+        let item = Item(text: "Estrela", image: "Estrela")
+        listItems = [item, item, item]
+        
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -25,16 +45,16 @@ class RankingViewController: UIViewController, UITableViewDataSource , UITableVi
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return listItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cellRanking", for: indexPath) as! RankingTableViewCell
         
-        cell.imageThing.image = UIImage(named: "star")
-        cell.thingName.text = "Star"
-        cell.userName.text = "Anakin"
-        cell.points.text = "1234 points"
+        cell.imageThing.image = UIImage(named: self.listItems[indexPath.row].getIdImage())
+        cell.thingName.text = self.listItems[indexPath.row].getText()
+        cell.userName.text = "name User"
+        cell.points.text = "\(self.listItems[indexPath.row].getQtdVotes()) points"
         
         return cell
     }

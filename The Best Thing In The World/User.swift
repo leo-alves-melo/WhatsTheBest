@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 class User {
     
     var name:String
@@ -18,7 +16,6 @@ class User {
     var profile:String
     var qtdPoints:Int
     
-    
     init()
     {
         name = String()
@@ -26,6 +23,14 @@ class User {
         age = Int()
         profile = String()
         qtdPoints = 0
+    }
+    
+    func getName() -> String {
+        return self.name
+    }
+    
+    func getQtdPoints() -> Int {
+        return self.qtdPoints
     }
 }
 

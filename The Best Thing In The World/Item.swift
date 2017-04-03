@@ -27,15 +27,23 @@ class Item {
         qtdVotes = 0
     }
     
-    
     func getIdImage() -> String {
-        
         return self.idImage!
     }
     
+    func getText() -> String {
+        return self.text!
+    }
+    
+    func getOwner() -> User {
+        return self.owner
+    }
+    
+    func getQtdVotes() -> Int {
+        return self.qtdVotes
+    }
     
     func increaseQtdVotes() {
-        
         self.qtdVotes += 1
     }
 
