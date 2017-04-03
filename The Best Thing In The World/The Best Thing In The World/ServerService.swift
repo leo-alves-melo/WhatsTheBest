@@ -11,7 +11,7 @@ import Foundation
 class ServerService {
     
     private let urlServer = "http://www.meuserver.com/"
-    private var user:User? = nil
+    private var user:User? = User(id: 1, name: "teste", gender: "F", age: 11, profile: "normal")
     
     private func readItemInServer(_ numberItems:Int, _ source:String) -> String? {
         return Bundle.main.path(forResource: source, ofType: nil)
@@ -115,7 +115,7 @@ class ServerService {
                             
                             itemsList.append(Item(id: id, subtitle: subtitle, imageLink:imageLink, score: score, owner: user))
                             
-                            
+                            itemsList.append(Item(id: parsedData[json]["ID"] as! Int, subtitle: parsedData[json]["subtitle"] as! String, imageLink: parsedData[json]["imageLink"] as! String, score: parsedData[json]["score"] as! Int, owner: self.user!, date: parsedData[json]["date"] as! String))
                             
                             
                         }
