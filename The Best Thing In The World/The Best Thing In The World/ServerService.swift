@@ -17,16 +17,21 @@ class ServerService {
         return Bundle.main.path(forResource: "DB", ofType: nil)
     }
     
-    private func updateItemInServer(_ item:Item) -> Bool {
+    private func sendToServer(_ json:[String:Any]) -> Bool {
+        
+        return false
+    }
+    
+    public func updateItemInServer(_ item:Item) -> Bool {
         
         let json:[String:Any] =
         [
-            "name":"s"
+            "ID":9, "subtitle":"a", "user":1, "score":1, "date":"a", "imageLink": item.getIdImage()
                 
             
         ]
         
-        return false
+        return sendToServer(json)
         
     }
     
