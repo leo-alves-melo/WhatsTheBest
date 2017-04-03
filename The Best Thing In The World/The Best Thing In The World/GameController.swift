@@ -144,7 +144,41 @@ class GameController: UIViewController, ItemPicker {
     }
     
     @IBAction func reportAction(_ sender: Any) {
-        print("i report u")
+        guard allowsVoting else { return }
+        
+        allowsVoting = false
+        
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+            animations: {
+                self.view.backgroundColor = #colorLiteral(red: 0.159234022, green: 0.1608105964, blue: 0.1608105964, alpha: 1)
+        }, completion: nil)
+        
+        shakeViewClockwise(duration: 0.3, itemView: rightChoice)
+        shakeViewClockwise(duration: 0.3, itemView: leftChoice)
+    
+    }
+    
+    func shakeViewClockwise(duration: TimeInterval, itemView: UIView)
+    {
+        UIView.animate(withDuration: duration,
+                       delay: 0,
+                       options: UIViewAnimationOptions.curveEaseInOut,
+                       animations: {
+                        itemView.transform = CGAffineTransform(rotationAngle: -0.2)
+        }, completion: { _ in self.shakeViewCounterclockwise(duration: duration, itemView: itemView) })
+    }
+    
+    func shakeViewCounterclockwise(duration: TimeInterval, itemView: UIView)
+    {
+
+        UIView.animate(withDuration: duration,
+                       delay: 0,
+                       options: UIViewAnimationOptions.curveEaseInOut,
+                       animations: {
+                        itemView.transform = CGAffineTransform(rotationAngle: 0.2)
+        }, completion: { _ in self.shakeViewClockwise(duration: duration, itemView: itemView) })
+        
     }
     
     func updateItems() {
