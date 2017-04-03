@@ -17,7 +17,6 @@ class User {
     private var gender:String
     private var age:Int
     private var profile:String
-    private var qtdPoints:Int
     
     
     init()
@@ -26,8 +25,17 @@ class User {
         gender = String()
         age = Int()
         profile = String()
-        qtdPoints = 0
-        id = 0
+        id = Int()
+    }
+    
+    init (id: Int, name: String, gender: String, age: Int, profile:String)
+    {
+        self.id = id
+        self.name = name
+        self.gender = gender
+        self.age = age
+        self.profile = profile
+    
     }
     
     func getId (user : User) -> Int

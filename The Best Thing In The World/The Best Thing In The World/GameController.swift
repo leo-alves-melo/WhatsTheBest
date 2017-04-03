@@ -18,6 +18,7 @@ class GameController: UIViewController, ItemPicker {
     private var leftViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     private var rightViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     private var roundController = RoundController()
+    
     private var itemRight = Item()
     private var itemLeft = Item()
     
