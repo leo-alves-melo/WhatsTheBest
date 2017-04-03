@@ -113,9 +113,9 @@ class ServerService {
                             var user = getUserByID(userID)
                             
                             
-                            itemsList.append(Item(id: id, subtitle: subtitle, imageLink:imageLink, score: score, owner: user))
+                            itemsList.append(Item(id: id, subtitle: subtitle, score: score, owner: user, date:imageLink))
                             
-                            itemsList.append(Item(id: parsedData[json]["ID"] as! Int, subtitle: parsedData[json]["subtitle"] as! String, imageLink: parsedData[json]["imageLink"] as! String, score: parsedData[json]["score"] as! Int, owner: self.user!, date: parsedData[json]["date"] as! String))
+                          
                             
                             
                         }
@@ -142,6 +142,47 @@ class ServerService {
             
         }
         return itemsList
+    }
+    
+    private func getAllItems() -> [Item]? {
+        
+        var itemsList:[Item] = []
+        
+        //Read File path
+        if let filepath = readItemInServer(10, "DB") {
+            
+            do {
+                
+                let contents = try String(contentsOfFile: filepath)
+                
+                let data = contents.data(using: .utf8)
+                
+                
+                
+                if let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [[String:Any]] {
+                    
+                
+                    for json in parsedData {
+                        
+                        let id = json["ID"] as! Int
+                        let subtitle = json["subtitle"] as! String
+                        let userID = json["user"] as! Int
+                        let score = json["score"] as! Int
+                        let date = json["date"] as! String
+                        let imageLink = json["imageLink"] as! String
+                        
+                        var user = getUserByID(userID)
+                        
+                        
+                        itemsList.append(Item(id: id, subtitle: subtitle, imageLink:imageLink, score: score, owner: user))
+                        
+                        itemsList.append(Item(id: parsedData[json]["ID"] as! Int, subtitle: parsedData[json]["subtitle"] as! String, imageLink: parsedData[json]["imageLink"] as! String, score: parsedData[json]["score"] as! Int, owner: self.user!, date: parsedData[json]["date"] as! String))
+                        
+                        
+                    }
+                }
+        
+        
     }
     
     func getRanking(type:Int) -> [Item]? {
