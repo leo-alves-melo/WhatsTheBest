@@ -33,7 +33,6 @@ class GameController: UIViewController, ItemPicker {
     private var starStartingCenter:CGPoint!
     
     var initialTouchLocation:CGPoint!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +56,6 @@ class GameController: UIViewController, ItemPicker {
         //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
-    
     }
     
     func panAction(rec: UIPanGestureRecognizer) {
@@ -106,7 +104,7 @@ class GameController: UIViewController, ItemPicker {
     
     func animateChoice(_ choiceView: ContentView) {
     
-        let d = 1.0
+        let d = 0.7
         
         UIView.animate(withDuration: d,
                        delay: 0,
@@ -144,6 +142,10 @@ class GameController: UIViewController, ItemPicker {
         
     }
     
+    @IBAction func reportAction(_ sender: Any) {
+        print("i report u")
+    }
+    
     func updateItems() {
         allowsVoting = true
         changeItems()
@@ -160,11 +162,8 @@ class GameController: UIViewController, ItemPicker {
         rightImage.image = UIImage(named: itemLeft.getImageLink())
     }
     
-    func reportAction(sender: UIButton) {
-        print("i report u")
-    }
     
-    func passAction(sender: UIButton) {
+    @IBAction func pass(_ sender: Any) {
         guard allowsVoting else { return }
         changeItems()
     }
