@@ -10,29 +10,34 @@ import Foundation
 
 class Item {
     
-    private var id:Int?
-    private var imageLink:String?
-    private var subtitle:String?
-    private var text:String?
-    private var score:Int
-    private var owner:User?
+    public private(set) var id:Int
+    public private(set) var imageLink:String?
+    public private(set) var subtitle:String?
+    public private(set) var text:String?
+    public private(set) var score:Int
+    public private(set) var owner:User?
    
 
     
     public init() {
         owner = User()
-        score = 0
+        score = Int()
+        id = Int()
     }
     
-    public init(subtitle: String, imageLink: String, score: Int) {
+    public init(id: Int, subtitle: String, imageLink: String, score: Int, owner: User) {
+        self.id = id
         self.subtitle = subtitle
         self.imageLink = imageLink
         self.score = score
+        self.owner = owner
     }
     
-    public init(text: String, score: Int) {
+    public init(id: Int, text: String, score: Int, owner: User) {
+        self.id = id
         self.text = text
         self.score = score
+        self.owner = owner
     }
     
     func getImageLink() -> String {
@@ -45,6 +50,10 @@ class Item {
         
         self.score += 1
     }
+    
+    
+    
+    
 
     
     

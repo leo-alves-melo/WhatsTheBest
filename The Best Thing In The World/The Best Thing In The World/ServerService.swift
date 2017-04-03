@@ -59,7 +59,7 @@ class ServerService {
                             
                            // itemsList.append(Item(text: parsedData[json]["subtitle"] as! String, image: parsedData[json]["imageLink"] as! String))
                             
-                            itemsList.append(Item(subtitle: parsedData[json]["subtitle"] as! String, imageLink: parsedData[json]["imageLink"] as! String, score: parsedData[json]["score"] as! Int))
+                            
                             
                             
                         }
