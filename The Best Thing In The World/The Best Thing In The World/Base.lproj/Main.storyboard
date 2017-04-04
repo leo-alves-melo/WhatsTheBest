@@ -94,6 +94,7 @@
                     <connections>
                         <outlet property="leftChoice" destination="0gB-ox-mx4" id="ycr-QO-ULf"/>
                         <outlet property="leftImage" destination="bCz-Bm-gEE" id="aZu-Sx-Lgg"/>
+                        <outlet property="reportButton" destination="BLf-9w-Tli" id="S3N-GT-19v"/>
                         <outlet property="rightChoice" destination="tDq-VX-4QL" id="4Kp-Kd-8DR"/>
                         <outlet property="rightImage" destination="i87-QC-t26" id="PAr-Oe-yDx"/>
                         <outlet property="starView" destination="Kms-mW-uBW" id="BNY-Vq-Ld2"/>

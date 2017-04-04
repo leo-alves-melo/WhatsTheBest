@@ -44,7 +44,7 @@ class Item {
         self.date = date
     }
     
-    func getImageLink() -> String {
+    func getImageLink() -> String? {
         
         return self.imageLink!
     }

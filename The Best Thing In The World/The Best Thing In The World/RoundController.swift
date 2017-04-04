@@ -20,20 +20,24 @@ class RoundController {
         
         if let items = serverService.getRandomItem(2) {
             
-            let item = Item(id: 1234, subtitle: "batata", imageLink: "batata", score: 10, owner: User())
-            //for i in 0...items.count-1 {
+            //let item = Item(id: 1234, text: "batata", score: 10, owner: User(), date: "batata")
+            for item in items {
                 self.queueItem.enqueue(item)
-            //}
+            }
         }
     }
     
     func changeItem () -> Item
     {
+        if queueItem.isEmpty {
+            getItemsFromServer()
+        }
+        
         if let item:Item = self.queueItem.dequeue() {
             return item
         }
         else {
-            var item = Item(id: 0, subtitle: "empty", imageLink: "empty", score: 0, owner: User())
+            var item = Item(id: 0, text: "empty", score: 0, owner: User(), date: "empty")
             return item
         }
     }
