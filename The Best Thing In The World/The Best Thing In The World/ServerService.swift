@@ -17,7 +17,37 @@ class ServerService {
         return Bundle.main.path(forResource: source, ofType: nil)
     }
     
+    private func writeToFile(_ itemList:[Item]) -> Bool {
+        
+        var jsonList:[[String:Any]] = []
+        
+        for item in itemList {
+            jsonList.append(createJsonFromItem(item))
+        }
+        
+        
+        
+        return false
+    }
+    
     private func sendToServer(_ json:[String:Any]) -> Bool {
+        
+        if var itemList = getAllItems() {
+            //Look for the specific json and replace it
+            
+            for item in itemList {
+                if(item.id == json["id"] as! Int) {
+                    
+                    item.setScore(json["score"] as! Int)
+                    
+                    return writeToFile(itemList)
+                }
+            }
+            
+            print("Item de id \(json["id"] as! Int)")
+        }
+        
+        
         
         return false
     }
@@ -70,14 +100,17 @@ class ServerService {
         return User()
     }
     
-    public func updateItemInServer(_ item:Item) -> Bool {
-        
-        let json:[String:Any] =
-        [
+    private func createJsonFromItem(_ item:Item) -> [String: Any] {
+        return [
             "ID":item.id, "subtitle":item.subtitle, "user":item.owner.getId(user: item.owner), "score":item.score, "date":item.date, "imageLink": item.getImageLink()
-                
+            
             
         ]
+    }
+    
+    public func updateItemInServer(_ item:Item) -> Bool {
+        
+        let json = createJsonFromItem(item)
         
         return sendToServer(json)
         

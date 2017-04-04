@@ -52,6 +52,11 @@ class Item {
     }
     
     func increaseQtdVotes() {
+        self.score += 1
+    }
+    
+    func setScore(_ score:Int) {
+        self.score = score
     }
     
     
