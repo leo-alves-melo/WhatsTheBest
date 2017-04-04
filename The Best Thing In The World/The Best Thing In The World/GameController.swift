@@ -189,8 +189,8 @@ class GameController: UIViewController, ItemPicker {
                     self.view.backgroundColor = #colorLiteral(red: 0.159234022, green: 0.1608105964, blue: 0.1608105964, alpha: 1)
             }, completion: nil)
             
-            shakeViewClockwise(duration: 0.25, itemView: rightChoice)
-            shakeViewClockwise(duration: 0.25, itemView: leftChoice)
+            shakeViewClockwise(duration: 0.15, itemView: rightChoice)
+            shakeViewClockwise(duration: 0.15, itemView: leftChoice)
         }
     }
     
@@ -200,7 +200,7 @@ class GameController: UIViewController, ItemPicker {
                        delay: 0,
                        options: UIViewAnimationOptions.curveEaseInOut,
                        animations: {
-                        itemView.transform = CGAffineTransform(rotationAngle: -0.15)
+                        itemView.transform = CGAffineTransform(rotationAngle: -0.10)
         }, completion: { _ in self.shakeViewCounterclockwise(duration: duration, itemView: itemView) })
     }
     
@@ -211,7 +211,7 @@ class GameController: UIViewController, ItemPicker {
                        delay: 0,
                        options: UIViewAnimationOptions.curveEaseInOut,
                        animations: {
-                        itemView.transform = CGAffineTransform(rotationAngle: 0.15)
+                        itemView.transform = CGAffineTransform(rotationAngle: 0.10)
         }, completion: { _ in self.shakeViewClockwise(duration: duration, itemView: itemView) })
         
     }
