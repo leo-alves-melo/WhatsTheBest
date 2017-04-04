@@ -1,0 +1,5 @@
+[
+{"id":1234, "name":"João da Silva", "gender":"Male", "age": 18, "score":500},
+{"id":123345, "name":"Maria Souza", "gender":"Female", "age": 21, "score":650},
+{"id":1000, "name":"Pedro Antônio Cruz", "gender":"Male", "age": 23, "score":350}
+]
