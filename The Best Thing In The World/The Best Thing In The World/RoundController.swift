@@ -18,7 +18,7 @@ class RoundController {
 
     func getItemsFromServer() {
         
-        if let items = serverService.getRandomItem(2) {
+        if let items = serverService.getRandomItem(8) {
             
             //let item = Item(id: 1234, text: "batata", score: 10, owner: User(), date: "batata")
             for item in items {

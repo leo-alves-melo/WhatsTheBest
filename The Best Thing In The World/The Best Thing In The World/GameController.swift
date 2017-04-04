@@ -39,8 +39,6 @@ class GameController: UIViewController, ItemPicker {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.changeItems()
-        
         leftChoice.tag = 1
         rightChoice.tag = 2
         starStartingCenter = starView.center
@@ -58,6 +56,7 @@ class GameController: UIViewController, ItemPicker {
         //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
+        changeItems()
     }
     
     func panAction(rec: UIPanGestureRecognizer) {
@@ -218,11 +217,11 @@ class GameController: UIViewController, ItemPicker {
     {
         itemRight = roundController.changeItem()
         
-        rightImage.image = UIImage(named: itemRight.getImageLink()!)
+        rightImage.image = UIImage(named: itemRight.getImageLink())
         
         itemLeft = roundController.changeItem()
         
-        rightImage.image = UIImage(named: itemLeft.getImageLink()!)
+        leftImage.image = UIImage(named: itemLeft.getImageLink())
     }
     
     
