@@ -14,10 +14,11 @@
 		7EEB10CF1E8D7689005CEBF6 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB10CE1E8D7689005CEBF6 /* LinkedList.swift */; };
 		8BBA2D681E8D36F100254A67 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA2D671E8D36F100254A67 /* ServerService.swift */; };
 		8BBA2D6A1E8D38BF00254A67 /* ServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA2D691E8D38BF00254A67 /* ServerModel.swift */; };
-		DE9376C31E8D7D3D00D7827C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */; };
 		8BBA2D6D1E8E7C5B00254A67 /* DB in Resources */ = {isa = PBXBuildFile; fileRef = 8BBA2D6C1E8E7C5B00254A67 /* DB */; };
-		DE9376C91E8D806800D7827C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */; };
 		8BBA2D6F1E8EB28E00254A67 /* Ranking in Resources */ = {isa = PBXBuildFile; fileRef = 8BBA2D6E1E8EB28E00254A67 /* Ranking */; };
+		DE9376C31E8D7D3D00D7827C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */; };
+		DE9376C91E8D806800D7827C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */; };
+		FE16D8F81E93CCC200BC18C7 /* OurButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE16D8F71E93CCC200BC18C7 /* OurButton.swift */; };
 		FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */; };
 		FE62A4101E8BFCE2005594B6 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40F1E8BFCE2005594B6 /* GameController.swift */; };
 		FE62A4131E8BFCE2005594B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE62A4111E8BFCE2005594B6 /* Main.storyboard */; };
@@ -35,10 +36,11 @@
 		7EEB10CE1E8D7689005CEBF6 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		8BBA2D671E8D36F100254A67 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
 		8BBA2D691E8D38BF00254A67 /* ServerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerModel.swift; sourceTree = "<group>"; };
-		DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		8BBA2D6C1E8E7C5B00254A67 /* DB */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DB; sourceTree = "<group>"; };
-		DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		8BBA2D6E1E8EB28E00254A67 /* Ranking */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Ranking; sourceTree = "<group>"; };
+		DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
+		FE16D8F71E93CCC200BC18C7 /* OurButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurButton.swift; sourceTree = "<group>"; };
 		FE62A40A1E8BFCE2005594B6 /* The Best Thing In The World.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Best Thing In The World.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE62A40F1E8BFCE2005594B6 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
@@ -109,7 +111,6 @@
 				7EEB10C01E8D348D005CEBF6 /* User.swift */,
 				7EEB10BE1E8D3469005CEBF6 /* Item.swift */,
 				8BBA2D691E8D38BF00254A67 /* ServerModel.swift */,
-				7EEB10CA1E8D7542005CEBF6 /* RoundController.swift */,
 				7EEB10CC1E8D764F005CEBF6 /* Queue.swift */,
 				7EEB10CE1E8D7689005CEBF6 /* LinkedList.swift */,
 			);
@@ -121,6 +122,7 @@
 			children = (
 				FE719AD71E8D5460000943B9 /* StarView.swift */,
 				DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */,
+				FE16D8F71E93CCC200BC18C7 /* OurButton.swift */,
 				FE62A41F1E8C0250005594B6 /* ContentView.swift */,
 			);
 			name = View;
@@ -129,6 +131,7 @@
 		FE719ADB1E8D564C000943B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7EEB10CA1E8D7542005CEBF6 /* RoundController.swift */,
 				FE62A40F1E8BFCE2005594B6 /* GameController.swift */,
 				DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */,
 			);
@@ -222,6 +225,7 @@
 				7EEB10CB1E8D7542005CEBF6 /* RoundController.swift in Sources */,
 				7EEB10CF1E8D7689005CEBF6 /* LinkedList.swift in Sources */,
 				FE62A4201E8C0250005594B6 /* ContentView.swift in Sources */,
+				FE16D8F81E93CCC200BC18C7 /* OurButton.swift in Sources */,
 				DE9376C31E8D7D3D00D7827C /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

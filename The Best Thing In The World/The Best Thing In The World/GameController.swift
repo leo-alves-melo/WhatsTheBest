@@ -26,9 +26,10 @@ class GameController: UIViewController, ItemPicker {
     private var reportingFlag = false
     
     @IBOutlet weak var reportButton: UIButton!
+    @IBOutlet weak var passButton: UIButton!
     @IBOutlet weak var leftChoice: ContentView!
     @IBOutlet weak var rightChoice: ContentView!
-    
+
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var starView: StarView!
@@ -44,6 +45,12 @@ class GameController: UIViewController, ItemPicker {
         leftChoice.tag = 1
         rightChoice.tag = 2
         starStartingCenter = starView.center
+        
+        leftImage.layer.cornerRadius = 10.0
+        leftImage.layer.masksToBounds = true
+        
+        rightImage.layer.cornerRadius = 10.0
+        rightImage.layer.masksToBounds = true
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         pan.maximumNumberOfTouches = 1
@@ -218,11 +225,12 @@ class GameController: UIViewController, ItemPicker {
     {
         itemRight = roundController.changeItem()
         
-        rightImage.image = UIImage(named: itemRight.getImageLink()!)
-        
+        rightImage.image = UIImage(named: itemRight.getImageLink())
+    
         itemLeft = roundController.changeItem()
         
-        rightImage.image = UIImage(named: itemLeft.getImageLink()!)
+        leftImage.image = UIImage(named: itemLeft.getImageLink())
+        
     }
     
     
