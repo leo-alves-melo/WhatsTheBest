@@ -74,7 +74,7 @@ class ServerService {
         
         let json:[String:Any] =
         [
-            "ID":9, "subtitle":"a", "user":1, "score":1, "date":"a", "imageLink": item.getImageLink()
+            "ID":item.id, "subtitle":item.subtitle!, "user":item.owner!.getId(user: <#T##User#>), "score":item.score, "date":item.date, "imageLink": item.getImageLink()
                 
             
         ]
@@ -113,7 +113,7 @@ class ServerService {
                             var user = getUserByID(userID)
                             
                             
-                            itemsList.append(Item(id: id, subtitle: subtitle, score: score, owner: user, date:imageLink))
+                            itemsList.append(Item(id: id, subtitle: subtitle, imageLink: imageLink, score: score, owner: user, date: date))
                             
                           
                             
@@ -142,6 +142,30 @@ class ServerService {
             
         }
         return itemsList
+    }
+    
+    private func sortListItems(_ itemsList: inout [Item]) {
+        
+        //Solving using insertion sort
+        
+        for i in 0..<itemsList.count {
+            var higher = i
+            
+            for j in i..<itemsList.count {
+                if(itemsList[j].score > itemsList[higher].score) {
+                    higher = j
+                }
+            }
+            
+            if(higher != i) {
+                swap(&itemsList[higher], &itemsList[i])
+            }
+            
+        }
+        
+        
+        
+        
     }
     
     private func getAllItems() -> [Item]? {
@@ -174,32 +198,67 @@ class ServerService {
                         var user = getUserByID(userID)
                         
                         
-                        itemsList.append(Item(id: id, subtitle: subtitle, imageLink:imageLink, score: score, owner: user))
-                        
-                        itemsList.append(Item(id: parsedData[json]["ID"] as! Int, subtitle: parsedData[json]["subtitle"] as! String, imageLink: parsedData[json]["imageLink"] as! String, score: parsedData[json]["score"] as! Int, owner: self.user!, date: parsedData[json]["date"] as! String))
+                        itemsList.append(Item(id: id, subtitle: subtitle, imageLink: imageLink, score: score, owner: user, date: date))
                         
                         
                     }
+                    
+                    
                 }
+                
+                
+                
+            } catch {
+                print("Não encontrei arquivo de itens")
+            }
+        }
         
+            
+        
+            return itemsList
         
     }
     
     func getRanking(type:Int) -> [Item]? {
+        
+        var itemsList:[Item] = []
+        
         switch type {
         case RankingType.allTime.rawValue:
-            print("all time")
+            
+            if var allItemsList = getAllItems() {
+                sortListItems(&allItemsList)
+                itemsList = allItemsList
+                
+                
+            }
+            
         case RankingType.lastMonth.rawValue:
-            print("last month")
+            if var allItemsList = getAllItems() {
+                sortListItems(&allItemsList)
+                itemsList = allItemsList
+                
+                
+            }
         case RankingType.lastWeek.rawValue:
-            print("last week")
+            if var allItemsList = getAllItems() {
+                sortListItems(&allItemsList)
+                itemsList = allItemsList
+                
+                
+            }
         case RankingType.today.rawValue:
-            print("today")
+            if var allItemsList = getAllItems() {
+                sortListItems(&allItemsList)
+                itemsList = allItemsList
+                
+                
+            }
         default:
             break
             
         }
-        return nil
+        return itemsList
     }
     
     func uploadNewItemToServer(item:Item?) -> Bool {
@@ -209,10 +268,18 @@ class ServerService {
     func voteInAnItem(_ item:Item) -> Bool {
         
         item.increaseQtdVotes()
+     
+        if(!updateItemInServer(item)) {
+            print("Não consegui atualizar este item no servidor!")
+            return false
+        }
+        else {
+            return true
+        }
         
         
         
-        return false
     }
 }
+
 
