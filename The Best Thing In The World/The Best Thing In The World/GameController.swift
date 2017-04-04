@@ -26,9 +26,10 @@ class GameController: UIViewController, ItemPicker {
     private var reportingFlag = false
     
     @IBOutlet weak var reportButton: UIButton!
+    @IBOutlet weak var passButton: UIButton!
     @IBOutlet weak var leftChoice: ContentView!
     @IBOutlet weak var rightChoice: ContentView!
-    
+
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var starView: StarView!
@@ -39,9 +40,17 @@ class GameController: UIViewController, ItemPicker {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.changeItems()
+        
         leftChoice.tag = 1
         rightChoice.tag = 2
         starStartingCenter = starView.center
+        
+        leftImage.layer.cornerRadius = 10.0
+        leftImage.layer.masksToBounds = true
+        
+        rightImage.layer.cornerRadius = 10.0
+        rightImage.layer.masksToBounds = true
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panAction))
         pan.maximumNumberOfTouches = 1
@@ -56,7 +65,6 @@ class GameController: UIViewController, ItemPicker {
         //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
-        changeItems()
     }
     
     func panAction(rec: UIPanGestureRecognizer) {
@@ -181,8 +189,8 @@ class GameController: UIViewController, ItemPicker {
                     self.view.backgroundColor = #colorLiteral(red: 0.159234022, green: 0.1608105964, blue: 0.1608105964, alpha: 1)
             }, completion: nil)
             
-            shakeViewClockwise(duration: 0.25, itemView: rightChoice)
-            shakeViewClockwise(duration: 0.25, itemView: leftChoice)
+            shakeViewClockwise(duration: 0.15, itemView: rightChoice)
+            shakeViewClockwise(duration: 0.15, itemView: leftChoice)
         }
     }
     
@@ -192,7 +200,7 @@ class GameController: UIViewController, ItemPicker {
                        delay: 0,
                        options: UIViewAnimationOptions.curveEaseInOut,
                        animations: {
-                        itemView.transform = CGAffineTransform(rotationAngle: -0.15)
+                        itemView.transform = CGAffineTransform(rotationAngle: -0.10)
         }, completion: { _ in self.shakeViewCounterclockwise(duration: duration, itemView: itemView) })
     }
     
@@ -203,7 +211,7 @@ class GameController: UIViewController, ItemPicker {
                        delay: 0,
                        options: UIViewAnimationOptions.curveEaseInOut,
                        animations: {
-                        itemView.transform = CGAffineTransform(rotationAngle: 0.15)
+                        itemView.transform = CGAffineTransform(rotationAngle: 0.10)
         }, completion: { _ in self.shakeViewClockwise(duration: duration, itemView: itemView) })
         
     }
@@ -218,10 +226,11 @@ class GameController: UIViewController, ItemPicker {
         itemRight = roundController.changeItem()
         
         rightImage.image = UIImage(named: itemRight.getImageLink())
-        
+    
         itemLeft = roundController.changeItem()
         
         leftImage.image = UIImage(named: itemLeft.getImageLink())
+        
     }
     
     
