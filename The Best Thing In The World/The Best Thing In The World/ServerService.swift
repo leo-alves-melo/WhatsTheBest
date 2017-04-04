@@ -36,7 +36,7 @@ class ServerService {
             //Look for the specific json and replace it
             
             for item in itemList {
-                if(item.id == json["id"] as! Int) {
+                if(item.id == json["ID"] as! Int) {
                     
                     item.setScore(json["score"] as! Int)
                     
@@ -44,7 +44,7 @@ class ServerService {
                 }
             }
             
-            print("Item de id \(json["id"] as! Int)")
+            print("Item de id \(json["ID"] as! Int)")
         }
         
         
@@ -70,7 +70,7 @@ class ServerService {
                         
                         
                         
-                        let userID = json["id"] as! Int
+                        let userID = json["ID"] as! Int
                         
                         //If we find the user, create an object and return it
                         if(userID == ID) {
