@@ -37,7 +37,7 @@ class RoundController {
             return item
         }
         else {
-            var item = Item(id: 0, text: "empty", score: 0, owner: User(), date: "empty")
+            var item = Item(id: 0, subtitle: "empty", imageLink: "empty", score: 0, owner: User(), date: "19/09/2013")
             return item
         }
     }

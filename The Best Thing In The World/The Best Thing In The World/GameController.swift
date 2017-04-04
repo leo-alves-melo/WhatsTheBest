@@ -39,7 +39,6 @@ class GameController: UIViewController, ItemPicker {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         self.changeItems()
         
         leftChoice.tag = 1
