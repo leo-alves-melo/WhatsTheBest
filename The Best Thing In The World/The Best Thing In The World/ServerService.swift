@@ -50,7 +50,7 @@ class ServerService {
                             let age = json["age"] as! Int
                             let score = json["score"] as! Int
                             
-                            return User(id: userID, name: name, gender: gender, age: age, profile: "\(score)")
+                            return User(id: userID, name: name, gender: gender, age: age, profile: "",score: score)
                             
                            
                         }
@@ -74,7 +74,7 @@ class ServerService {
         
         let json:[String:Any] =
         [
-            "ID":item.id, "subtitle":item.subtitle!, "user":item.owner!.getId(user: <#T##User#>), "score":item.score, "date":item.date, "imageLink": item.getImageLink()
+            "ID":item.id, "subtitle":item.subtitle, "user":item.owner.getId(user: item.owner), "score":item.score, "date":item.date, "imageLink": item.getImageLink()
                 
             
         ]
