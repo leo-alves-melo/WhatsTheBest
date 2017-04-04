@@ -23,7 +23,9 @@ class GameController: UIViewController, ItemPicker {
     private var itemLeft = Item()
     
     private var allowsVoting = true
+    private var reportingFlag = false
     
+    @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var leftChoice: ContentView!
     @IBOutlet weak var rightChoice: ContentView!
     
@@ -34,7 +36,6 @@ class GameController: UIViewController, ItemPicker {
     private var starStartingCenter:CGPoint!
     
     var initialTouchLocation:CGPoint!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,6 @@ class GameController: UIViewController, ItemPicker {
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
         changeItems()
-    
     }
     
     func panAction(rec: UIPanGestureRecognizer) {
@@ -105,7 +105,7 @@ class GameController: UIViewController, ItemPicker {
     
     func animateChoice(_ choiceView: ContentView) {
     
-        let d = 1.0
+        let d = 0.7
         
         UIView.animate(withDuration: d,
                        delay: 0,
@@ -143,6 +143,71 @@ class GameController: UIViewController, ItemPicker {
         
     }
     
+    @IBAction func reportAction(_ sender: Any) {
+        
+        if (reportingFlag == true) {
+            print("boi")
+            self.view.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+            leftChoice.transform = CGAffineTransform.identity
+            rightChoice.transform =  CGAffineTransform.identity
+            leftChoice.layer.removeAllAnimations()
+            rightChoice.layer.removeAllAnimations()
+            /*UIView.animate(withDuration: 0.2,
+                           delay: 0,
+                           options: UIViewAnimationOptions.curveEaseInOut,
+                           animations: {
+                           self.leftChoice.transform = CGAffineTransform(rotationAngle: 0)
+            }, completion: nil)
+
+            UIView.animate(withDuration: 0.2,
+                           delay: 0,
+                           options: UIViewAnimationOptions.curveEaseInOut,
+                           animations: {
+                            self.rightChoice.transform = CGAffineTransform(rotationAngle: 0)
+            }, completion: nil)*/
+            allowsVoting = true
+            reportingFlag = false
+            reportButton.setTitle("Report", for: UIControlState.normal)
+        }
+        else if allowsVoting == true {
+            print("oi")
+            reportButton.setTitle("Cancel", for: UIControlState.normal)
+            reportingFlag = true
+            allowsVoting = false
+            
+            UIView.animate(withDuration: 0.2,
+                           delay: 0,
+                animations: {
+                    self.view.backgroundColor = #colorLiteral(red: 0.159234022, green: 0.1608105964, blue: 0.1608105964, alpha: 1)
+            }, completion: nil)
+            
+            shakeViewClockwise(duration: 0.25, itemView: rightChoice)
+            shakeViewClockwise(duration: 0.25, itemView: leftChoice)
+        }
+    }
+    
+    func shakeViewClockwise(duration: TimeInterval, itemView: UIView)
+    {
+        UIView.animate(withDuration: duration,
+                       delay: 0,
+                       options: UIViewAnimationOptions.curveEaseInOut,
+                       animations: {
+                        itemView.transform = CGAffineTransform(rotationAngle: -0.15)
+        }, completion: { _ in self.shakeViewCounterclockwise(duration: duration, itemView: itemView) })
+    }
+    
+    func shakeViewCounterclockwise(duration: TimeInterval, itemView: UIView)
+    {
+
+        UIView.animate(withDuration: duration,
+                       delay: 0,
+                       options: UIViewAnimationOptions.curveEaseInOut,
+                       animations: {
+                        itemView.transform = CGAffineTransform(rotationAngle: 0.15)
+        }, completion: { _ in self.shakeViewClockwise(duration: duration, itemView: itemView) })
+        
+    }
+    
     func updateItems() {
         allowsVoting = true
         changeItems()
@@ -154,18 +219,13 @@ class GameController: UIViewController, ItemPicker {
         
         rightImage.image = UIImage(named: itemRight.getImageLink())
         
-        print(itemRight.getImageLink())
-        
         itemLeft = roundController.changeItem()
         
         leftImage.image = UIImage(named: itemLeft.getImageLink())
     }
     
-    func reportAction(sender: UIButton) {
-        print("i report u")
-    }
     
-    func passAction(sender: UIButton) {
+    @IBAction func pass(_ sender: Any) {
         guard allowsVoting else { return }
         changeItems()
     }

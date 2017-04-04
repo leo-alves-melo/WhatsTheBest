@@ -11,20 +11,19 @@ import Foundation
 class Item {
     
     public private(set) var id:Int
-    public private(set) var imageLink:String?
-    public private(set) var subtitle:String?
-    public private(set) var text:String?
+    public private(set) var imageLink:String
+    public private(set) var subtitle:String
     public private(set) var score:Int
-    public private(set) var owner:User?
+    public private(set) var owner:User
     public private(set) var date:String
-   
-
     
     public init() {
-        owner = User()
-        score = Int()
-        id = Int()
-        date = String()
+        self.id = Int()
+        self.subtitle = String()
+        self.imageLink = String()
+        self.score = Int()
+        self.owner = User()
+        self.date = String()
     }
     
     public init(id: Int, subtitle: String, imageLink: String, score: Int, owner: User, date: String) {
@@ -36,23 +35,23 @@ class Item {
         self.date = date
     }
     
-    public init(id: Int, text: String, score: Int, owner: User, date:String) {
-        self.id = id
-        self.text = text
-        self.score = score
-        self.owner = owner
-        self.date = date
-    }
-    
     func getImageLink() -> String {
-        
-        return self.imageLink!
+        return self.imageLink
     }
     
+    func getSubtitle() -> String {
+        return self.subtitle
+    }
+    
+    func getOwner() -> User {
+        return self.owner
+    }
+    
+    func getScore() -> Int {
+        return self.score
+    }
     
     func increaseQtdVotes() {
-        
-        self.score += 1
     }
     
     
