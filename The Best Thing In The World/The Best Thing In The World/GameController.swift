@@ -45,7 +45,6 @@ class GameController: UIViewController, ItemPicker {
         
         leftChoice.tag = 1
         rightChoice.tag = 2
-        starStartingCenter = starView.center
         
         leftImage.layer.cornerRadius = 10.0
         leftImage.layer.masksToBounds = true
@@ -76,6 +75,7 @@ class GameController: UIViewController, ItemPicker {
         
         switch rec.state {
             case .began:
+                starStartingCenter = starView.center
                 fallthrough
             case .changed:
                 let translation = rec.translation(in: self.view)
@@ -89,6 +89,7 @@ class GameController: UIViewController, ItemPicker {
     }
     
     func itemTapAction(sender : UITapGestureRecognizer) {
+        starStartingCenter = starView.center
         checkIfItemPicked(point: sender.location(ofTouch: 0, in: self.view))
         //pickItem(choice: sender)
     }
@@ -126,27 +127,28 @@ class GameController: UIViewController, ItemPicker {
                        animations: {
                             self.starView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
                             self.starView.center = choiceView.center
-                            self.starView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                            self.starView.transform = CGAffineTransform(scaleX: 2, y: 2)
                        }, completion: nil)
         
         UIView.animate(withDuration: d,
-                       delay: d/3,
+                       delay: 2*d/7,
                        //options: UIViewAnimationOptions.curveEaseOut,
                        animations: {
                             self.starView.transform = CGAffineTransform(rotationAngle: 3 * CGFloat.pi)
-        }, completion: starReturningAnimation)
+        }, completion: { finished in self.starReturningAnimation(finished)
+            self.updateItems() })
         
         UIView.animate(withDuration: d,
                        delay: 0,
                        //options: UIViewAnimationOptions.curveEaseOut,
                        animations: {
                             choiceView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                            //choiceView.backgroundColor = UIColor.blue
+                            //choiceView.layer.shadowColor = UIColor.orange.cgColor
                        }, completion: {_ in UIView.animate(withDuration: d,
                                                            animations:{
                                                             choiceView.transform = CGAffineTransform(scaleX: 1, y: 1)
                                                             //choiceView.backgroundColor = UIColor.white
-                                                        }, completion: { _ in self.updateItems()
+                                                        //}, completion: { _ in self.updateItems()
                         }) })
         
         
@@ -231,16 +233,30 @@ class GameController: UIViewController, ItemPicker {
         changeItems()
     }
     
+    
     func changeItems()
     {
-        itemRight = roundController.changeItem()
+        let duration = 0.20
         
-        rightImage.image = UIImage(named: itemRight.getImageLink())
+        itemRight = roundController.changeItem()
+        UIView.animate(withDuration: duration,
+                       animations: { self.rightImage.alpha = 0.0 },
+                       completion: { _ in
+                                    self.rightImage.image = UIImage(named: self.itemRight.getImageLink())
+                                    UIView.animate(withDuration: duration, animations: {
+                                        self.rightImage.alpha = 1.0 })
+                                    }
+        )
     
         itemLeft = roundController.changeItem()
-        
-        leftImage.image = UIImage(named: itemLeft.getImageLink())
-        
+        UIView.animate(withDuration: duration,
+                       animations: { self.leftImage.alpha = 0.0 },
+                       completion: { _ in
+                        self.leftImage.image = UIImage(named: self.itemLeft.getImageLink())
+                        UIView.animate(withDuration: duration, animations: {
+                            self.leftImage.alpha = 1.0 })
+                        }
+        )
     }
     
     
