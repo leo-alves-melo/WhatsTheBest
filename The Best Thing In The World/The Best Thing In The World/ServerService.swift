@@ -292,9 +292,7 @@ class ServerService {
                 if(dateObj! > lastMonthDate) {
                     itemList.append(item)
                 }
-                else {
-                    print("maior")
-                }
+                
             }
             
                 
@@ -305,7 +303,7 @@ class ServerService {
             for item in allItemsList {
 
                 let dateString = item.date
-                print(dateString)
+              
                 let dateFormater = DateFormatter()
                 dateFormater.dateFormat = "dd/MM/yyyy"
                 let dateObj = dateFormater.date(from: dateString)
