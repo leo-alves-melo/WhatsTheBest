@@ -12,7 +12,7 @@ import Foundation
 class RoundController {
 
 
-    private var serverService = ServerService()
+    private var serverService = ServerService.sharedInstance
 
     private var queueItem = Queue<Item>()
 

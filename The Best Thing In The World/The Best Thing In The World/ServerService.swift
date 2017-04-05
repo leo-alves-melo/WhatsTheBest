@@ -10,14 +10,93 @@ import Foundation
 
 class ServerService {
     
+    static let sharedInstance:ServerService = ServerService()
+    
     private let urlServer = "http://www.meuserver.com/"
     private var user:User? = User(id: 1, name: "teste", gender: "F", age: 11, profile: "normal", score: 90)
     
+    public var allItemsList:[Item] = []
+    
+    private init() {
+        
+        if let list = getAllItems() {
+             allItemsList = list
+            
+        }
+       
+    }
+    
+   
     private func readItemInServer(_ numberItems:Int, _ source:String) -> String? {
         return Bundle.main.path(forResource: source, ofType: nil)
     }
     
+    private func writeToFile(_ itemList:[Item]) -> Bool {
+        
+        var jsonList:[[String:Any]] = []
+        
+        for item in itemList {
+            jsonList.append(createJsonFromItem(item))
+        }
+        
+        
+        
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            
+            let path = dir.appendingPathComponent("DB")
+            
+            do {
+                
+                var text = "[\n"
+                
+                try text.write(to: path, atomically: false, encoding: .utf8)
+                
+               
+                
+                for json in jsonList {
+                    let str = json.description
+                    
+                    try str.write(to: path, atomically: false, encoding: .utf8)
+
+                    
+                   
+                    //try file.write(toFile: ",\n", atomically: false, encoding: .utf8)
+                    
+                }
+                
+                //try file.write(toFile: "\n]", atomically: false, encoding: .utf8)
+            }
+            catch {
+                print("Erro ao escrever no arquivo!")
+            }
+        }
+        else {
+            print("Nao abri arquivo")
+        }
+        
+        
+        
+        return false
+    }
+    
     private func sendToServer(_ json:[String:Any]) -> Bool {
+        
+        if var itemList = getAllItems() {
+            //Look for the specific json and update it
+            
+            for item in itemList {
+                if(item.id == json["ID"] as! Int) {
+                    
+                    item.setScore(json["score"] as! Int)
+                    
+                    return writeToFile(itemList)
+                }
+            }
+            
+            print("Item de id \(json["ID"] as! Int)")
+        }
+        
+        
         
         return false
     }
@@ -40,7 +119,7 @@ class ServerService {
                         
                         
                         
-                        let userID = json["id"] as! Int
+                        let userID = json["ID"] as! Int
                         
                         //If we find the user, create an object and return it
                         if(userID == ID) {
@@ -70,77 +149,44 @@ class ServerService {
         return User()
     }
     
-    public func updateItemInServer(_ item:Item) -> Bool {
-        
-        let json:[String:Any] =
-        [
+    private func createJsonFromItem(_ item:Item) -> [String: Any] {
+        return [
             "ID":item.id, "subtitle":item.subtitle, "user":item.owner.getId(user: item.owner), "score":item.score, "date":item.date, "imageLink": item.getImageLink()
-                
+            
             
         ]
+    }
+    
+    public func updateItemInServer(_ item:Item) -> Bool {
         
-        return sendToServer(json)
+        var returnValue = false
+        
+        for currentItem in allItemsList {
+            if(currentItem.id == item.id) {
+                currentItem.setScore(item.score)
+                returnValue = true
+            }
+        }
+        
+        return returnValue
         
     }
     
     func getRandomItem(_ numberItens:Int) -> [Item]? {
         
         var itemsList:[Item] = []
+        var indexList:[Int] = []
         
-        //Read File path
-        if let filepath = readItemInServer(numberItens, "DB") {
-            
-            do {
-                
-                let contents = try String(contentsOfFile: filepath)
-                
-                let data = contents.data(using: .utf8)
-                
-                
-                
-                if let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [[String:Any]] {
-                    
-                    if(numberItens <= parsedData.count) {
-                        for json in 0..<numberItens {
-                            
-                            let id = parsedData[json]["ID"] as! Int
-                            let subtitle = parsedData[json]["subtitle"] as! String
-                            let userID = parsedData[json]["user"] as! Int
-                            let score = parsedData[json]["score"] as! Int
-                            let date = parsedData[json]["date"] as! String
-                            let imageLink = parsedData[json]["imageLink"] as! String
-                            
-                            var user = getUserByID(userID)
-                            
-                            
-                            itemsList.append(Item(id: id, subtitle: subtitle, imageLink: imageLink, score: score, owner: user, date: date))
-                            
-                          
-                            
-                            
-                        }
-                    }
-                    else {
-                        print("A lista contém apenas \(parsedData.count) elementos, mas você pediu \(numberItens)")
-                    }
-                    
-                    
-                    
-                    
-                }
-                
-               
-            }
-            catch {
-                print("catch")
-            }
-            
+        for i in 0..<allItemsList.count {
+            indexList.append(i)
         }
-        else {
-            
-            print("else")
-            
+        
+        
+        for _ in 0..<numberItens {
+            itemsList.append(allItemsList[indexList.remove(at: Int(arc4random_uniform(UInt32(indexList.count))))])
         }
+        
+        
         return itemsList
     }
     
@@ -221,44 +267,31 @@ class ServerService {
     
     func getRanking(type:Int) -> [Item]? {
         
-        var itemsList:[Item] = []
+ 
         
         switch type {
         case RankingType.allTime.rawValue:
-            
-            if var allItemsList = getAllItems() {
-                sortListItems(&allItemsList)
-                itemsList = allItemsList
-                
-                
-            }
+ 
+            sortListItems(&allItemsList)
             
         case RankingType.lastMonth.rawValue:
-            if var allItemsList = getAllItems() {
-                sortListItems(&allItemsList)
-                itemsList = allItemsList
+
+            sortListItems(&allItemsList)
                 
-                
-            }
         case RankingType.lastWeek.rawValue:
-            if var allItemsList = getAllItems() {
-                sortListItems(&allItemsList)
-                itemsList = allItemsList
-                
-                
-            }
+
+            sortListItems(&allItemsList)
+            
         case RankingType.today.rawValue:
-            if var allItemsList = getAllItems() {
                 sortListItems(&allItemsList)
-                itemsList = allItemsList
+            
                 
-                
-            }
         default:
             break
             
         }
-        return itemsList
+        
+        return allItemsList
     }
     
     func uploadNewItemToServer(item:Item?) -> Bool {
