@@ -79,7 +79,6 @@ class GameController: UIViewController, ItemPicker {
                 rec.setTranslation(CGPoint.zero, in: self.view)
             case .ended:
                 checkIfItemPicked(point: starView.center)
-            
             default: break
         }
     }
@@ -105,6 +104,7 @@ class GameController: UIViewController, ItemPicker {
             animateChoice(rightChoice)
             roundController.increaseVoteItem(itemRight)
         }
+        else { starReturningAnimation(false) }
     }
     
     func pickItem(choice: ContentView) {
@@ -129,10 +129,7 @@ class GameController: UIViewController, ItemPicker {
                        //options: UIViewAnimationOptions.curveEaseOut,
                        animations: {
                             self.starView.transform = CGAffineTransform(rotationAngle: 3 * CGFloat.pi)
-        }, completion: {_ in UIView.animate(withDuration: 0.5, delay: 0, animations: {
-            self.starView.center = self.starStartingCenter
-            self.starView.transform = CGAffineTransform(scaleX: 1, y: 1)
-        })})
+        }, completion: starReturningAnimation)
         
         UIView.animate(withDuration: d,
                        delay: 0,
@@ -150,6 +147,14 @@ class GameController: UIViewController, ItemPicker {
         
         
     }
+    
+    func starReturningAnimation(_ finished: Bool) {
+        UIView.animate(withDuration: 0.5, delay: 0, animations: {
+            self.starView.center = self.starStartingCenter
+            self.starView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        })
+    }
+    
     
     @IBAction func reportAction(_ sender: Any) {
         
