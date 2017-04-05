@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E6890511E95221A00DC9026 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6890501E95221A00DC9026 /* ProfileViewController.swift */; };
+		7E6890531E95244100DC9026 /* colwCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6890521E95244100DC9026 /* colwCell.swift */; };
 		7EEB10BF1E8D3469005CEBF6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB10BE1E8D3469005CEBF6 /* Item.swift */; };
 		7EEB10C11E8D348D005CEBF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB10C01E8D348D005CEBF6 /* User.swift */; };
 		7EEB10CB1E8D7542005CEBF6 /* RoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB10CA1E8D7542005CEBF6 /* RoundController.swift */; };
@@ -17,10 +19,10 @@
 		8BBA2D6D1E8E7C5B00254A67 /* DB in Resources */ = {isa = PBXBuildFile; fileRef = 8BBA2D6C1E8E7C5B00254A67 /* DB */; };
 		8BBA2D6F1E8EB28E00254A67 /* Ranking in Resources */ = {isa = PBXBuildFile; fileRef = 8BBA2D6E1E8EB28E00254A67 /* Ranking */; };
 		8BBA2D731E93DBA400254A67 /* users in Resources */ = {isa = PBXBuildFile; fileRef = 8BBA2D721E93DBA400254A67 /* users */; };
-		DE4C4E4C1E95206B00A35E9C /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C4E4B1E95206B00A35E9C /* CustomTabBarController.swift */; };
-		DE4C4E4E1E95207700A35E9C /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C4E4D1E95207700A35E9C /* CustomTabBar.swift */; };
-		DE4C4E501E95207F00A35E9C /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C4E4F1E95207F00A35E9C /* CustomTabBarItem.swift */; };
-		DE4C4E521E95221F00A35E9C /* CustomTabAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C4E511E95221F00A35E9C /* CustomTabAnimatedTransitioning.swift */; };
+		DE4C4E581E95344D00A35E9C /* CustomTabAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C4E541E95344D00A35E9C /* CustomTabAnimatedTransitioning.swift */; };
+		DE4C4E591E95344D00A35E9C /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C4E551E95344D00A35E9C /* CustomTabBar.swift */; };
+		DE4C4E5A1E95344D00A35E9C /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C4E561E95344D00A35E9C /* CustomTabBarController.swift */; };
+		DE4C4E5B1E95344D00A35E9C /* CustomTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4C4E571E95344D00A35E9C /* CustomTabBarItem.swift */; };
 		DE9376C31E8D7D3D00D7827C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */; };
 		DE9376C91E8D806800D7827C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */; };
 		FE16D8F81E93CCC200BC18C7 /* OurButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE16D8F71E93CCC200BC18C7 /* OurButton.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E6890501E95221A00DC9026 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7E6890521E95244100DC9026 /* colwCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = colwCell.swift; path = ../colwCell.swift; sourceTree = "<group>"; };
 		7EEB10BE1E8D3469005CEBF6 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
 		7EEB10C01E8D348D005CEBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		7EEB10CA1E8D7542005CEBF6 /* RoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundController.swift; sourceTree = "<group>"; };
@@ -44,10 +48,10 @@
 		8BBA2D6C1E8E7C5B00254A67 /* DB */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DB; sourceTree = "<group>"; };
 		8BBA2D6E1E8EB28E00254A67 /* Ranking */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Ranking; sourceTree = "<group>"; };
 		8BBA2D721E93DBA400254A67 /* users */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = users; sourceTree = "<group>"; };
-		DE4C4E4B1E95206B00A35E9C /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBarController.swift; path = "../../../../../Downloads/CustomTabBar-3/CustomTabBar/CustomTabBarController.swift"; sourceTree = "<group>"; };
-		DE4C4E4D1E95207700A35E9C /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBar.swift; path = "../../../../../Downloads/CustomTabBar-3/CustomTabBar/CustomTabBar.swift"; sourceTree = "<group>"; };
-		DE4C4E4F1E95207F00A35E9C /* CustomTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBarItem.swift; path = "../../../../../Downloads/CustomTabBar-3/CustomTabBar/CustomTabBarItem.swift"; sourceTree = "<group>"; };
-		DE4C4E511E95221F00A35E9C /* CustomTabAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabAnimatedTransitioning.swift; path = "../../../../../Downloads/CustomTabBar-3/CustomTabBar/CustomTabAnimatedTransitioning.swift"; sourceTree = "<group>"; };
+		DE4C4E541E95344D00A35E9C /* CustomTabAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		DE4C4E551E95344D00A35E9C /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		DE4C4E561E95344D00A35E9C /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		DE4C4E571E95344D00A35E9C /* CustomTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarItem.swift; sourceTree = "<group>"; };
 		DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		FE16D8F71E93CCC200BC18C7 /* OurButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurButton.swift; sourceTree = "<group>"; };
@@ -86,9 +90,9 @@
 		DE4C4E531E95227700A35E9C /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				DE4C4E4F1E95207F00A35E9C /* CustomTabBarItem.swift */,
-				DE4C4E511E95221F00A35E9C /* CustomTabAnimatedTransitioning.swift */,
-				DE4C4E4D1E95207700A35E9C /* CustomTabBar.swift */,
+				DE4C4E541E95344D00A35E9C /* CustomTabAnimatedTransitioning.swift */,
+				DE4C4E551E95344D00A35E9C /* CustomTabBar.swift */,
+				DE4C4E571E95344D00A35E9C /* CustomTabBarItem.swift */,
 			);
 			name = MainTabBar;
 			sourceTree = "<group>";
@@ -145,6 +149,7 @@
 				FE719AD71E8D5460000943B9 /* StarView.swift */,
 				DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */,
 				FE16D8F71E93CCC200BC18C7 /* OurButton.swift */,
+				7E6890521E95244100DC9026 /* colwCell.swift */,
 				FE62A41F1E8C0250005594B6 /* ContentView.swift */,
 			);
 			name = View;
@@ -153,8 +158,9 @@
 		FE719ADB1E8D564C000943B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DE4C4E4B1E95206B00A35E9C /* CustomTabBarController.swift */,
+				DE4C4E561E95344D00A35E9C /* CustomTabBarController.swift */,
 				7EEB10CA1E8D7542005CEBF6 /* RoundController.swift */,
+				7E6890501E95221A00DC9026 /* ProfileViewController.swift */,
 				FE62A40F1E8BFCE2005594B6 /* GameController.swift */,
 				DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */,
 			);
@@ -239,22 +245,24 @@
 			files = (
 				7EEB10BF1E8D3469005CEBF6 /* Item.swift in Sources */,
 				8BBA2D6A1E8D38BF00254A67 /* ServerModel.swift in Sources */,
-				DE4C4E501E95207F00A35E9C /* CustomTabBarItem.swift in Sources */,
-				DE4C4E4C1E95206B00A35E9C /* CustomTabBarController.swift in Sources */,
 				FE62A4101E8BFCE2005594B6 /* GameController.swift in Sources */,
-				DE4C4E521E95221F00A35E9C /* CustomTabAnimatedTransitioning.swift in Sources */,
-				DE4C4E4E1E95207700A35E9C /* CustomTabBar.swift in Sources */,
 				8BBA2D681E8D36F100254A67 /* ServerService.swift in Sources */,
+				DE4C4E5A1E95344D00A35E9C /* CustomTabBarController.swift in Sources */,
 				DE9376C91E8D806800D7827C /* RankingTableViewCell.swift in Sources */,
+				7E6890511E95221A00DC9026 /* ProfileViewController.swift in Sources */,
 				FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */,
 				7EEB10CD1E8D764F005CEBF6 /* Queue.swift in Sources */,
 				7EEB10C11E8D348D005CEBF6 /* User.swift in Sources */,
 				FE719AD81E8D5460000943B9 /* StarView.swift in Sources */,
 				7EEB10CB1E8D7542005CEBF6 /* RoundController.swift in Sources */,
 				7EEB10CF1E8D7689005CEBF6 /* LinkedList.swift in Sources */,
+				DE4C4E581E95344D00A35E9C /* CustomTabAnimatedTransitioning.swift in Sources */,
+				DE4C4E591E95344D00A35E9C /* CustomTabBar.swift in Sources */,
 				FE62A4201E8C0250005594B6 /* ContentView.swift in Sources */,
 				FE16D8F81E93CCC200BC18C7 /* OurButton.swift in Sources */,
+				7E6890531E95244100DC9026 /* colwCell.swift in Sources */,
 				DE9376C31E8D7D3D00D7827C /* RankingViewController.swift in Sources */,
+				DE4C4E5B1E95344D00A35E9C /* CustomTabBarItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
