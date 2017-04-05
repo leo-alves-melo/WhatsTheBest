@@ -12,13 +12,13 @@ import Foundation
 class RoundController {
 
 
-    private var serverService = ServerService.sharedInstance
+    private var serverService = ServerService()
 
     private var queueItem = Queue<Item>()
 
     func getItemsFromServer() {
         
-        if let items = serverService.getRandomItem(8) {
+        if let items = serverService.getRandomItem(2) {
             
             //let item = Item(id: 1234, text: "batata", score: 10, owner: User(), date: "batata")
             for item in items {
