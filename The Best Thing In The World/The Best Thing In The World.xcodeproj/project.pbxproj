@@ -114,7 +114,6 @@
 				7EEB10C01E8D348D005CEBF6 /* User.swift */,
 				7EEB10BE1E8D3469005CEBF6 /* Item.swift */,
 				8BBA2D691E8D38BF00254A67 /* ServerModel.swift */,
-				7EEB10CA1E8D7542005CEBF6 /* RoundController.swift */,
 				7EEB10CC1E8D764F005CEBF6 /* Queue.swift */,
 				7EEB10CE1E8D7689005CEBF6 /* LinkedList.swift */,
 			);
@@ -174,7 +173,7 @@
 				TargetAttributes = {
 					FE62A4091E8BFCE2005594B6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = UMGS9WR96D;
+						DevelopmentTeam = H3K85CCEUB;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -354,10 +353,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = UMGS9WR96D;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = H3K85CCEUB;
 				INFOPLIST_FILE = "The Best Thing In The World/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "br.org.eldorado.bepid.The-Best-Thing-In-The-World";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.org.eldorado.bepid.yasmin.The-Best-Thing-In-The-World";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -367,10 +367,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = UMGS9WR96D;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = H3K85CCEUB;
 				INFOPLIST_FILE = "The Best Thing In The World/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "br.org.eldorado.bepid.The-Best-Thing-In-The-World";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.org.eldorado.bepid.yasmin.The-Best-Thing-In-The-World";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

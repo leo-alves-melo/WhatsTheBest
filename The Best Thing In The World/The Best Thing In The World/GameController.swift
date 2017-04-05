@@ -40,6 +40,7 @@ class GameController: UIViewController, ItemPicker {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.changeItems()
         
         leftChoice.tag = 1
@@ -65,6 +66,10 @@ class GameController: UIViewController, ItemPicker {
         //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
+        
+        
+        
+        
     }
     
     func panAction(rec: UIPanGestureRecognizer) {
@@ -139,11 +144,11 @@ class GameController: UIViewController, ItemPicker {
                        //options: UIViewAnimationOptions.curveEaseOut,
                        animations: {
                             choiceView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                            choiceView.backgroundColor = UIColor.blue
+                            //choiceView.backgroundColor = UIColor.blue
                        }, completion: {_ in UIView.animate(withDuration: d,
                                                            animations:{
                                                             choiceView.transform = CGAffineTransform(scaleX: 1, y: 1)
-                                                            choiceView.backgroundColor = UIColor.white
+                                                            //choiceView.backgroundColor = UIColor.white
                                                         }, completion: { _ in self.updateItems()
                         }) })
         
@@ -243,5 +248,9 @@ class GameController: UIViewController, ItemPicker {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+   
 }
+
+
 
