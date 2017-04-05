@@ -13,7 +13,7 @@ class OurButton : UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.layer.cornerRadius = 20.0
+        self.layer.cornerRadius = 5.0
         //self.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
         //self.layer.shadowRadius = 10.0
         //self.layer.shadowOffset = CGSize(width: 3 , height: 3)

@@ -22,11 +22,11 @@ class ContentView : UIView {
     }
     
     public func adaptLayer() {
-        self.layer.cornerRadius = 10.0
-        self.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1).cgColor
-        self.layer.borderWidth = 2.0
-        self.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        self.layer.shadowRadius = 5.0
+        self.layer.cornerRadius = 8.0
+        //self.layer.borderColor = UIColor.
+        //self.layer.borderWidth = 2.0
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowRadius = 3.0
         //self.layer.shadowOffset = CGSize(width: 3 , height: 3)
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shadowOpacity = 0.2
