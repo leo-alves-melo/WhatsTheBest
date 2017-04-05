@@ -19,14 +19,14 @@ class RankingViewController: UIViewController, UITableViewDataSource , UITableVi
         super.viewDidLoad()
         self.tabBar.selectedItem = self.tabBar.items![0]
         
-        listItems = ServerService().getRanking(type: RankingType.allTime.rawValue)!
+        listItems = ServerService.sharedInstance.getRanking(type: RankingType.allTime.rawValue)!
 
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let tag = tabBar.selectedItem!.tag
         
-        listItems = ServerService().getRanking(type: tag)!
+        listItems = ServerService.sharedInstance.getRanking(type: tag)!
         
         tableView.reloadData()
     }
