@@ -267,23 +267,71 @@ class ServerService {
     
     func getRanking(type:Int) -> [Item]? {
         
- 
+        var itemList:[Item] = []
+        
+        sortListItems(&allItemsList)
+        
         
         switch type {
         case RankingType.allTime.rawValue:
  
-            sortListItems(&allItemsList)
+            itemList = allItemsList
             
         case RankingType.lastMonth.rawValue:
 
-            sortListItems(&allItemsList)
+            let lastMonthDate = Date(timeIntervalSinceNow: -604800*4)
+            
+            for item in allItemsList {
+                
+                let dateString = item.date
+                let dateFormater = DateFormatter()
+                dateFormater.dateFormat = "dd/MM/yyyy"
+                let dateObj = dateFormater.date(from: dateString)
+                
+                
+                if(dateObj! > lastMonthDate) {
+                    itemList.append(item)
+                }
+                else {
+                    print("maior")
+                }
+            }
+            
                 
         case RankingType.lastWeek.rawValue:
+            
+            let lastWeekDate = Date(timeIntervalSinceNow: -604800)
+            
+            for item in allItemsList {
 
-            sortListItems(&allItemsList)
+                let dateString = item.date
+                print(dateString)
+                let dateFormater = DateFormatter()
+                dateFormater.dateFormat = "dd/MM/yyyy"
+                let dateObj = dateFormater.date(from: dateString)
+
+            
+                if(dateObj! > lastWeekDate) {
+                    itemList.append(item)
+                }
+            }
+
             
         case RankingType.today.rawValue:
-                sortListItems(&allItemsList)
+            let todayDate = Date(timeIntervalSinceNow: -86400)
+            
+            for item in allItemsList {
+                
+                let dateString = item.date
+                let dateFormater = DateFormatter()
+                dateFormater.dateFormat = "dd/MM/yyyy"
+                let dateObj = dateFormater.date(from: dateString)
+                
+                
+                if(dateObj! > todayDate) {
+                    itemList.append(item)
+                }
+            }
             
                 
         default:
@@ -291,11 +339,19 @@ class ServerService {
             
         }
         
-        return allItemsList
+        return itemList
     }
     
     func uploadNewItemToServer(item:Item?) -> Bool {
-        return false
+        
+        var returnValue = false
+        
+        if let newItem = item {
+            allItemsList.append(newItem)
+            returnValue = true
+        }
+        
+        return returnValue
     }
     
     func voteInAnItem(_ item:Item) -> Bool {
