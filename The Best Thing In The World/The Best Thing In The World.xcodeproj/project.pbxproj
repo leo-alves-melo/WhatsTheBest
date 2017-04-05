@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E6890511E95221A00DC9026 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6890501E95221A00DC9026 /* ProfileViewController.swift */; };
+		7E6890531E95244100DC9026 /* colwCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6890521E95244100DC9026 /* colwCell.swift */; };
 		7EEB10BF1E8D3469005CEBF6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB10BE1E8D3469005CEBF6 /* Item.swift */; };
 		7EEB10C11E8D348D005CEBF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB10C01E8D348D005CEBF6 /* User.swift */; };
 		7EEB10CB1E8D7542005CEBF6 /* RoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB10CA1E8D7542005CEBF6 /* RoundController.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E6890501E95221A00DC9026 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7E6890521E95244100DC9026 /* colwCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = colwCell.swift; path = ../colwCell.swift; sourceTree = "<group>"; };
 		7EEB10BE1E8D3469005CEBF6 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
 		7EEB10C01E8D348D005CEBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		7EEB10CA1E8D7542005CEBF6 /* RoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				FE719AD71E8D5460000943B9 /* StarView.swift */,
 				DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */,
 				FE16D8F71E93CCC200BC18C7 /* OurButton.swift */,
+				7E6890521E95244100DC9026 /* colwCell.swift */,
 				FE62A41F1E8C0250005594B6 /* ContentView.swift */,
 			);
 			name = View;
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				7EEB10CA1E8D7542005CEBF6 /* RoundController.swift */,
+				7E6890501E95221A00DC9026 /* ProfileViewController.swift */,
 				FE62A40F1E8BFCE2005594B6 /* GameController.swift */,
 				DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */,
 			);
@@ -222,6 +228,7 @@
 				FE62A4101E8BFCE2005594B6 /* GameController.swift in Sources */,
 				8BBA2D681E8D36F100254A67 /* ServerService.swift in Sources */,
 				DE9376C91E8D806800D7827C /* RankingTableViewCell.swift in Sources */,
+				7E6890511E95221A00DC9026 /* ProfileViewController.swift in Sources */,
 				FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */,
 				7EEB10CD1E8D764F005CEBF6 /* Queue.swift in Sources */,
 				7EEB10C11E8D348D005CEBF6 /* User.swift in Sources */,
@@ -230,6 +237,7 @@
 				7EEB10CF1E8D7689005CEBF6 /* LinkedList.swift in Sources */,
 				FE62A4201E8C0250005594B6 /* ContentView.swift in Sources */,
 				FE16D8F81E93CCC200BC18C7 /* OurButton.swift in Sources */,
+				7E6890531E95244100DC9026 /* colwCell.swift in Sources */,
 				DE9376C31E8D7D3D00D7827C /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
