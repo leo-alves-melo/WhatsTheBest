@@ -252,23 +252,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NO9-4y-azY">
-                                <rect key="frame" x="156" y="20" width="62" height="29"/>
+                                <rect key="frame" x="154.5" y="20" width="66.5" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="xiV-ms-SSP"/>
+                                    <constraint firstAttribute="height" constant="42" id="xiV-ms-SSP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-7y-ID0">
-                                <rect key="frame" x="16" y="98" width="343" height="520"/>
+                                <rect key="frame" x="0.0" y="111" width="375" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellRanking" rowHeight="95" id="rrd-GP-oIo" customClass="RankingTableViewCell" customModule="The_Best_Thing_In_The_World" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="95"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rrd-GP-oIo" id="Kk5-Tf-AhZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="94"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WaL-12-yiB">
@@ -278,7 +278,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ThingName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqq-9i-DuV">
-                                                    <rect key="frame" x="93" y="8" width="171" height="28"/>
+                                                    <rect key="frame" x="93" y="8" width="203" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -290,7 +290,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="102839 points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kX-cQ-kWM">
-                                                    <rect key="frame" x="122" y="66" width="141" height="21"/>
+                                                    <rect key="frame" x="122" y="66" width="173" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -336,7 +336,7 @@
                                 </connections>
                             </tableView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVJ-HB-g61">
-                                <rect key="frame" x="16" y="49" width="343" height="49"/>
+                                <rect key="frame" x="0.0" y="62" width="374" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <tabBarItem title="All Time" id="kpi-PB-dwK">
@@ -357,17 +357,17 @@
                                 </connections>
                             </tabBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.91021399770007039" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NO9-4y-azY" firstAttribute="centerX" secondItem="wTm-7y-ID0" secondAttribute="centerX" id="2PV-NC-MLm"/>
-                            <constraint firstItem="wTm-7y-ID0" firstAttribute="trailing" secondItem="LN2-Ux-VJC" secondAttribute="trailingMargin" id="L5Q-Hn-Map"/>
+                            <constraint firstItem="SVJ-HB-g61" firstAttribute="leading" secondItem="LN2-Ux-VJC" secondAttribute="leading" id="48N-Vi-GsM"/>
+                            <constraint firstItem="wTm-7y-ID0" firstAttribute="trailing" secondItem="LN2-Ux-VJC" secondAttribute="trailingMargin" constant="16" id="L5Q-Hn-Map"/>
                             <constraint firstItem="wTm-7y-ID0" firstAttribute="bottom" secondItem="Mti-3c-sP4" secondAttribute="top" id="Nez-oN-gSO"/>
                             <constraint firstItem="wTm-7y-ID0" firstAttribute="top" secondItem="SVJ-HB-g61" secondAttribute="bottom" id="SyY-8y-XdK"/>
                             <constraint firstItem="NO9-4y-azY" firstAttribute="bottom" secondItem="SVJ-HB-g61" secondAttribute="top" id="V3q-xZ-dyE"/>
                             <constraint firstItem="NO9-4y-azY" firstAttribute="top" secondItem="izL-yM-COu" secondAttribute="bottom" id="Yz7-fk-e2K"/>
-                            <constraint firstItem="wTm-7y-ID0" firstAttribute="leading" secondItem="LN2-Ux-VJC" secondAttribute="leadingMargin" id="lxG-KH-2a0"/>
+                            <constraint firstItem="wTm-7y-ID0" firstAttribute="leading" secondItem="LN2-Ux-VJC" secondAttribute="leadingMargin" constant="-16" id="lxG-KH-2a0"/>
                             <constraint firstItem="NO9-4y-azY" firstAttribute="centerX" secondItem="SVJ-HB-g61" secondAttribute="centerX" id="tlr-Bs-t60"/>
-                            <constraint firstItem="SVJ-HB-g61" firstAttribute="leading" secondItem="wTm-7y-ID0" secondAttribute="leading" id="z7c-FV-sFy"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="Ranking" image="Item 3" id="5Gp-KJ-WA0"/>
