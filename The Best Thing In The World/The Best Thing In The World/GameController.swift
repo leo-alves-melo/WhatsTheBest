@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol ItemPicker {
     func checkIfItemPicked(point: CGPoint) //-> Item?
@@ -15,6 +16,15 @@ protocol ItemPicker {
 
 class GameController: UIViewController, ItemPicker {
 
+    var choiceSound = URL(fileURLWithPath: Bundle.main.path(forResource: "choice", ofType: "wav")!)
+    var choiceAudioPlayer:AVAudioPlayer!
+    
+    var reportSound = URL(fileURLWithPath: Bundle.main.path(forResource: "report", ofType: "wav")!)
+    var reportAudioPlayer:AVAudioPlayer!
+    
+    var bgSound = URL(fileURLWithPath: Bundle.main.path(forResource: "bg", ofType: "mp3")!)
+    var bgAudioPlayer:AVAudioPlayer!
+    
     private var leftViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     private var rightViewCenterOffset:CGPoint = CGPoint(x: 0, y: 0)
     private var roundController = RoundController()
@@ -34,6 +44,7 @@ class GameController: UIViewController, ItemPicker {
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var starView: StarView!
     
+    private var starSetCenterFlag = true
     private var starStartingCenter:CGPoint!
     
     var initialTouchLocation:CGPoint!
@@ -66,8 +77,20 @@ class GameController: UIViewController, ItemPicker {
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
         
+        //prepares the sound effect
+        do {
+            try choiceAudioPlayer = AVAudioPlayer(contentsOf: choiceSound)
+                choiceAudioPlayer.prepareToPlay()
+            try reportAudioPlayer = AVAudioPlayer(contentsOf: reportSound)
+                reportAudioPlayer.prepareToPlay()
+            try bgAudioPlayer = AVAudioPlayer(contentsOf: bgSound)
+                bgAudioPlayer.prepareToPlay()
+        }
+        catch {
+            print("Error: sound not loaded")
+        }
         
-        
+        bgAudioPlayer.play()
         
     }
     
@@ -75,7 +98,10 @@ class GameController: UIViewController, ItemPicker {
         
         switch rec.state {
             case .began:
-                starStartingCenter = starView.center
+                if starSetCenterFlag {
+                    starStartingCenter = starView.center
+                    starSetCenterFlag = false
+                }
                 fallthrough
             case .changed:
                 let translation = rec.translation(in: self.view)
@@ -120,7 +146,7 @@ class GameController: UIViewController, ItemPicker {
     func animateChoice(_ choiceView: ContentView) {
     
         let d = 0.7
-        
+        choiceAudioPlayer.play()
         UIView.animate(withDuration: d,
                        delay: 0,
                        //options: UIViewAnimationOptions.curveEaseIn,
@@ -128,7 +154,7 @@ class GameController: UIViewController, ItemPicker {
                             self.starView.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
                             self.starView.center = choiceView.center
                             self.starView.transform = CGAffineTransform(scaleX: 2, y: 2)
-                       }, completion: nil)
+        }, completion: nil)
         
         UIView.animate(withDuration: d,
                        delay: 2*d/7,
@@ -167,24 +193,23 @@ class GameController: UIViewController, ItemPicker {
         
         if (reportingFlag == true) {
             print("boi")
-            self.view.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-            leftChoice.transform = CGAffineTransform.identity
-            rightChoice.transform =  CGAffineTransform.identity
+            self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            
             leftChoice.layer.removeAllAnimations()
             rightChoice.layer.removeAllAnimations()
-            /*UIView.animate(withDuration: 0.2,
+            UIView.animate(withDuration: 0.2,
                            delay: 0,
                            options: UIViewAnimationOptions.curveEaseInOut,
                            animations: {
-                           self.leftChoice.transform = CGAffineTransform(rotationAngle: 0)
-            }, completion: nil)
+                                self.leftChoice.transform = CGAffineTransform.identity
+                           }, completion: nil)
 
             UIView.animate(withDuration: 0.2,
                            delay: 0,
                            options: UIViewAnimationOptions.curveEaseInOut,
                            animations: {
-                            self.rightChoice.transform = CGAffineTransform(rotationAngle: 0)
-            }, completion: nil)*/
+                            self.rightChoice.transform =  CGAffineTransform.identity
+                           }, completion: nil)
             allowsVoting = true
             reportingFlag = false
             reportButton.setTitle("Report", for: UIControlState.normal)
@@ -194,6 +219,8 @@ class GameController: UIViewController, ItemPicker {
             reportButton.setTitle("Cancel", for: UIControlState.normal)
             reportingFlag = true
             allowsVoting = false
+            reportAudioPlayer.play()
+            
             
             UIView.animate(withDuration: 0.2,
                            delay: 0,
@@ -213,7 +240,9 @@ class GameController: UIViewController, ItemPicker {
                        options: UIViewAnimationOptions.curveEaseInOut,
                        animations: {
                         itemView.transform = CGAffineTransform(rotationAngle: -0.10)
-        }, completion: { _ in self.shakeViewCounterclockwise(duration: duration, itemView: itemView) })
+        }, completion: { finished in if finished {
+                self.shakeViewCounterclockwise(duration: duration, itemView: itemView)
+            } })
     }
     
     func shakeViewCounterclockwise(duration: TimeInterval, itemView: UIView)
@@ -224,7 +253,9 @@ class GameController: UIViewController, ItemPicker {
                        options: UIViewAnimationOptions.curveEaseInOut,
                        animations: {
                         itemView.transform = CGAffineTransform(rotationAngle: 0.10)
-        }, completion: { _ in self.shakeViewClockwise(duration: duration, itemView: itemView) })
+        }, completion: { finished in if finished {
+            self.shakeViewClockwise(duration: duration, itemView: itemView)
+            } })
         
     }
     
