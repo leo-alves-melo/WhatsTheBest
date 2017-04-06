@@ -34,7 +34,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLf-9w-Tli" customClass="OurButton" customModule="The_Best_Thing_In_The_World" customModuleProvider="target">
-                                <rect key="frame" x="54" y="517" width="134" height="48"/>
+                                <rect key="frame" x="54" y="524" width="134" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.75686274509803919" green="0.20000000000000001" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
@@ -66,7 +66,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ot-JJ-tgD" customClass="OurButton" customModule="The_Best_Thing_In_The_World" customModuleProvider="target">
-                                <rect key="frame" x="191" y="517" width="134" height="48"/>
+                                <rect key="frame" x="191" y="524" width="134" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.050980392156862744" green="0.60784313725490191" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
@@ -79,9 +79,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick one!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFQ-Ra-15D">
-                                <rect key="frame" x="16" y="80" width="127" height="21"/>
+                                <rect key="frame" x="16" y="72" width="127" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -94,14 +94,32 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle" translatesAutoresizingMaskIntoConstraints="NO" id="FXJ-0W-qf6">
+                                        <rect key="frame" x="-31" y="-27" width="133" height="134"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEb-7o-F69">
+                                <rect key="frame" x="16" y="316" width="165" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-SD-s9m">
+                                <rect key="frame" x="197" y="316" width="165" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.016634213530000001" green="0.29973641719999999" blue="0.50761065729999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Game" image="Item 2" id="uJ2-fd-GJQ"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Game" image="star_icon" id="uJ2-fd-GJQ"/>
                     <connections>
                         <outlet property="leftChoice" destination="0gB-ox-mx4" id="ycr-QO-ULf"/>
                         <outlet property="leftImage" destination="bCz-Bm-gEE" id="aZu-Sx-Lgg"/>
@@ -109,6 +127,8 @@
                         <outlet property="rightChoice" destination="tDq-VX-4QL" id="4Kp-Kd-8DR"/>
                         <outlet property="rightImage" destination="i87-QC-t26" id="PAr-Oe-yDx"/>
                         <outlet property="starView" destination="Kms-mW-uBW" id="BNY-Vq-Ld2"/>
+                        <outlet property="subImageLeft" destination="DEb-7o-F69" id="68l-tt-CHP"/>
+                        <outlet property="subImageRight" destination="vGA-SD-s9m" id="VCG-1H-9HR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -223,13 +243,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="cFL-y9-zO1">
-                                <rect key="frame" x="248" y="185" width="83" height="81"/>
+                                <rect key="frame" x="260" y="195" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" image="Item 1" id="7ww-X0-ob2"/>
+                    <tabBarItem key="tabBarItem" title="Item 1" image="user_icon" id="7ww-X0-ob2"/>
                     <connections>
                         <outlet property="collectionView" destination="KGN-pZ-JbJ" id="4BM-8y-bLU"/>
                         <outlet property="imgProfile" destination="fGB-vO-2vL" id="CjU-ED-NuY"/>
@@ -370,7 +390,7 @@
                             <constraint firstItem="NO9-4y-azY" firstAttribute="centerX" secondItem="SVJ-HB-g61" secondAttribute="centerX" id="tlr-Bs-t60"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="2" title="Ranking" image="Item 3" id="5Gp-KJ-WA0"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Ranking" image="trophy_icon" id="5Gp-KJ-WA0"/>
                     <connections>
                         <outlet property="tabBar" destination="SVJ-HB-g61" id="dDd-DN-PrO"/>
                         <outlet property="tableView" destination="wTm-7y-ID0" id="jBv-Zb-zte"/>
@@ -403,10 +423,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Item 1" width="16" height="16"/>
-        <image name="Item 2" width="16" height="16"/>
-        <image name="Item 3" width="16" height="16"/>
         <image name="carlosalberto" width="700" height="400"/>
+        <image name="circle" width="800" height="800"/>
         <image name="star" width="1943" height="1859"/>
+        <image name="star_icon" width="30" height="30"/>
+        <image name="trophy_icon" width="30" height="30"/>
+        <image name="user_icon" width="30" height="30"/>
     </resources>
 </document>

@@ -22,6 +22,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         // Do any additional setup after loading the view.
         self.imgProfile.layer.cornerRadius = 8.0
         
+        self.imgProfile.layer.shadowOpacity = 0.2
+        self.imgProfile.layer.shouldRasterize = true
+        self.imgProfile.layer.rasterizationScale = UIScreen.main.scale
+        self.imgProfile.layer.masksToBounds = false
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -44,6 +49,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         cell.imgCell.layer.cornerRadius = 8.0
         cell.imgCell.layer.masksToBounds = false
+        
+        
         
         
         return cell
