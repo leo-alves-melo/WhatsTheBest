@@ -40,6 +40,7 @@ class GameController: UIViewController, ItemPicker {
     @IBOutlet weak var leftChoice: ContentView!
     @IBOutlet weak var rightChoice: ContentView!
 
+    @IBOutlet weak var lblGameTalk: UILabel!
     @IBOutlet weak var subImageRight: UILabel!
     @IBOutlet weak var subImageLeft: UILabel!
     @IBOutlet weak var leftImage: UIImageView!
@@ -50,11 +51,13 @@ class GameController: UIViewController, ItemPicker {
     private var starStartingCenter:CGPoint!
     
     var initialTouchLocation:CGPoint!
+    
+    private var listSentences:[String:String] = [:]
+    var indexList:[Int] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.changeItems()
         
         leftChoice.tag = 1
         rightChoice.tag = 2
@@ -78,6 +81,7 @@ class GameController: UIViewController, ItemPicker {
         //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
+
         
         //prepares the sound effect
         do {
@@ -92,7 +96,15 @@ class GameController: UIViewController, ItemPicker {
             print("Error: sound not loaded")
         }
         
+        
+
+        
         bgAudioPlayer.play()
+        
+       listSentences=roundController.loadSentences()
+      
+        self.changeItems()
+
         
     }
     
@@ -292,6 +304,22 @@ class GameController: UIViewController, ItemPicker {
         )
         subImageRight.text = itemRight.getSubtitle()
         subImageLeft.text = itemLeft.getSubtitle()
+        //lblGameTalk.text = "Esse nem eu escolheria"
+        
+        
+        
+        let randomIndex = Int(arc4random_uniform(UInt32(2)))
+        print(randomIndex)
+        if randomIndex == 0
+        {
+            lblGameTalk.text=listSentences[itemRight.getImageLink()]
+
+        }
+        else {
+            lblGameTalk.text=listSentences[itemLeft.getImageLink()]
+        }
+        
+
     }
     
     
@@ -300,6 +328,10 @@ class GameController: UIViewController, ItemPicker {
         changeItems()
     }
     
+    @IBAction func btnMute(_ sender: UIButton) {
+        
+        bgAudioPlayer.stop()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
