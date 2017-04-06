@@ -40,24 +40,23 @@ class GameController: UIViewController, ItemPicker {
     @IBOutlet weak var leftChoice: ContentView!
     @IBOutlet weak var rightChoice: ContentView!
 
-    @IBOutlet weak var lblGameTalk: UILabel!
     @IBOutlet weak var subImageRight: UILabel!
     @IBOutlet weak var subImageLeft: UILabel!
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var starView: StarView!
     
+    @IBOutlet weak var starCircle: UIImageView!
+    
     private var starSetCenterFlag = true
     private var starStartingCenter:CGPoint!
     
     var initialTouchLocation:CGPoint!
-    
-    private var listSentences:[String:String] = [:]
-    var indexList:[Int] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.changeItems()
         
         leftChoice.tag = 1
         rightChoice.tag = 2
@@ -81,7 +80,6 @@ class GameController: UIViewController, ItemPicker {
         //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
-
         
         //prepares the sound effect
         do {
@@ -96,16 +94,18 @@ class GameController: UIViewController, ItemPicker {
             print("Error: sound not loaded")
         }
         
-        
-
-        
+        bgAudioPlayer.numberOfLoops = -1
         bgAudioPlayer.play()
         
-       listSentences=roundController.loadSentences()
-      
-        self.changeItems()
-
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.toValue = CGFloat(M_PI * 2.0)
+        rotateAnimation.duration = 2.0
+        rotateAnimation.repeatCount = FLT_MAX;
         
+        starCircle.layer.add(rotateAnimation, forKey: nil)
+        
+        //rotateView(targetView: starCircle, duration: 1.0)
     }
     
     func panAction(rec: UIPanGestureRecognizer) {
@@ -304,22 +304,6 @@ class GameController: UIViewController, ItemPicker {
         )
         subImageRight.text = itemRight.getSubtitle()
         subImageLeft.text = itemLeft.getSubtitle()
-        //lblGameTalk.text = "Esse nem eu escolheria"
-        
-        
-        
-        let randomIndex = Int(arc4random_uniform(UInt32(2)))
-        print(randomIndex)
-        if randomIndex == 0
-        {
-            lblGameTalk.text=listSentences[itemRight.getImageLink()]
-
-        }
-        else {
-            lblGameTalk.text=listSentences[itemLeft.getImageLink()]
-        }
-        
-
     }
     
     
@@ -328,10 +312,6 @@ class GameController: UIViewController, ItemPicker {
         changeItems()
     }
     
-    @IBAction func btnMute(_ sender: UIButton) {
-        
-        bgAudioPlayer.stop()
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

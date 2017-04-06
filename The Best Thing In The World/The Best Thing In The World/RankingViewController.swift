@@ -18,16 +18,22 @@ class RankingViewController: UIViewController, UITableViewDataSource , UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBar.selectedItem = self.tabBar.items![0]
+        UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15)], for: .normal)
         
         listItems = ServerService.sharedInstance.getRanking(type: RankingType.allTime.rawValue)!
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let tag = tabBar.selectedItem!.tag
+        listItems = ServerService.sharedInstance.getRanking(type: tag)!
+        tableView.reloadData()
+
+    }
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let tag = tabBar.selectedItem!.tag
-        
         listItems = ServerService.sharedInstance.getRanking(type: tag)!
-        
         tableView.reloadData()
     }
     
