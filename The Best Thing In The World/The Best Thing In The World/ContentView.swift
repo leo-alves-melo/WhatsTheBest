@@ -10,8 +10,6 @@ import UIKit
 
 class ContentView : UIView {
     
-    
-    
     //Define your initialisers here
     private var initialTouchLocation:CGPoint?
     
@@ -23,9 +21,9 @@ class ContentView : UIView {
     
     public func adaptLayer() {
         self.layer.cornerRadius = 8.0
-        //self.layer.borderColor = UIColor.
-        //self.layer.borderWidth = 2.0
-        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderWidth = 2.0
+        self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowRadius = 5.0
         //self.layer.shadowOffset = CGSize(width: 3 , height: 3)
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
