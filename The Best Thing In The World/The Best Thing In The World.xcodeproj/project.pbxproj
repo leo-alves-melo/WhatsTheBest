@@ -26,6 +26,9 @@
 		DE9376C31E8D7D3D00D7827C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */; };
 		DE9376C91E8D806800D7827C /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */; };
 		FE16D8F81E93CCC200BC18C7 /* OurButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE16D8F71E93CCC200BC18C7 /* OurButton.swift */; };
+		FE16D9021E968C4000BC18C7 /* choice.wav in Resources */ = {isa = PBXBuildFile; fileRef = FE16D8FF1E968C4000BC18C7 /* choice.wav */; };
+		FE16D9031E968C4000BC18C7 /* report.wav in Resources */ = {isa = PBXBuildFile; fileRef = FE16D9001E968C4000BC18C7 /* report.wav */; };
+		FE16D9041E968C4000BC18C7 /* bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE16D9011E968C4000BC18C7 /* bg.mp3 */; };
 		FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */; };
 		FE62A4101E8BFCE2005594B6 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40F1E8BFCE2005594B6 /* GameController.swift */; };
 		FE62A4131E8BFCE2005594B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE62A4111E8BFCE2005594B6 /* Main.storyboard */; };
@@ -55,6 +58,9 @@
 		DE9376C21E8D7D3D00D7827C /* RankingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		DE9376C81E8D806800D7827C /* RankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		FE16D8F71E93CCC200BC18C7 /* OurButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurButton.swift; sourceTree = "<group>"; };
+		FE16D8FF1E968C4000BC18C7 /* choice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = choice.wav; sourceTree = "<group>"; };
+		FE16D9001E968C4000BC18C7 /* report.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = report.wav; sourceTree = "<group>"; };
+		FE16D9011E968C4000BC18C7 /* bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg.mp3; sourceTree = "<group>"; };
 		FE62A40A1E8BFCE2005594B6 /* The Best Thing In The World.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Best Thing In The World.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE62A40F1E8BFCE2005594B6 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
@@ -122,6 +128,9 @@
 				FE719ADB1E8D564C000943B9 /* Controller */,
 				FE62A4111E8BFCE2005594B6 /* Main.storyboard */,
 				FE62A4141E8BFCE2005594B6 /* Assets.xcassets */,
+				FE16D8FF1E968C4000BC18C7 /* choice.wav */,
+				FE16D9001E968C4000BC18C7 /* report.wav */,
+				FE16D9011E968C4000BC18C7 /* bg.mp3 */,
 				FE62A4161E8BFCE2005594B6 /* LaunchScreen.storyboard */,
 				FE62A4191E8BFCE2005594B6 /* Info.plist */,
 				FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */,
@@ -230,9 +239,12 @@
 				8BBA2D6D1E8E7C5B00254A67 /* DB in Resources */,
 				FE62A4181E8BFCE2005594B6 /* LaunchScreen.storyboard in Resources */,
 				FE62A4151E8BFCE2005594B6 /* Assets.xcassets in Resources */,
+				FE16D9031E968C4000BC18C7 /* report.wav in Resources */,
 				8BBA2D731E93DBA400254A67 /* users in Resources */,
+				FE16D9041E968C4000BC18C7 /* bg.mp3 in Resources */,
 				FE62A4131E8BFCE2005594B6 /* Main.storyboard in Resources */,
 				8BBA2D6F1E8EB28E00254A67 /* Ranking in Resources */,
+				FE16D9021E968C4000BC18C7 /* choice.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
