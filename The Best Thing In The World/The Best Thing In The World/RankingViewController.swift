@@ -23,11 +23,16 @@ class RankingViewController: UIViewController, UITableViewDataSource , UITableVi
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let tag = tabBar.selectedItem!.tag
+        listItems = ServerService.sharedInstance.getRanking(type: tag)!
+        tableView.reloadData()
+
+    }
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let tag = tabBar.selectedItem!.tag
-        
         listItems = ServerService.sharedInstance.getRanking(type: tag)!
-        
         tableView.reloadData()
     }
     
@@ -48,6 +53,9 @@ class RankingViewController: UIViewController, UITableViewDataSource , UITableVi
         cell.thingName.text = self.listItems[indexPath.row].getSubtitle()
         cell.userName.text = self.listItems[indexPath.row].getOwner().getName()
         cell.points.text = "\(self.listItems[indexPath.row].getScore()) points"
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none;
+
         
         return cell
     }
