@@ -30,6 +30,9 @@ class GameController: UIViewController, ItemPicker {
     @IBOutlet weak var leftChoice: ContentView!
     @IBOutlet weak var rightChoice: ContentView!
 
+    @IBOutlet weak var subImageLeft: UILabel!
+    @IBOutlet weak var subImageRight: UILabel!
+    
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var starView: StarView!
@@ -236,10 +239,13 @@ class GameController: UIViewController, ItemPicker {
         itemRight = roundController.changeItem()
         
         rightImage.image = UIImage(named: itemRight.getImageLink())
+        subImageRight.text = itemRight.getSubtitle()
     
         itemLeft = roundController.changeItem()
         
+        
         leftImage.image = UIImage(named: itemLeft.getImageLink())
+        subImageLeft.text = itemLeft.getSubtitle()
         
     }
     

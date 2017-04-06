@@ -26,7 +26,7 @@ class ContentView : UIView {
         //self.layer.borderColor = UIColor.
         //self.layer.borderWidth = 2.0
         self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowRadius = 3.0
+        self.layer.shadowRadius = 5.0
         //self.layer.shadowOffset = CGSize(width: 3 , height: 3)
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shadowOpacity = 0.2
