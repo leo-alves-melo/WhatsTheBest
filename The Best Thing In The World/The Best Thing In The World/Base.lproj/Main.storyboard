@@ -89,8 +89,8 @@
                                 <rect key="frame" x="152" y="382" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="estrelaa" translatesAutoresizingMaskIntoConstraints="NO" id="SpE-D1-vVu">
-                                        <rect key="frame" x="-10" y="3" width="90" height="90"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="SpE-D1-vVu">
+                                        <rect key="frame" x="8" y="10" width="58" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
@@ -112,7 +112,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circlee" translatesAutoresizingMaskIntoConstraints="NO" id="FXJ-0W-qf6">
-                                <rect key="frame" x="89" y="332" width="200" height="200"/>
+                                <rect key="frame" x="89" y="323" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -425,7 +425,6 @@
     <resources>
         <image name="carlosalberto" width="700" height="400"/>
         <image name="circlee" width="5096" height="5096"/>
-        <image name="estrelaa" width="4096" height="4096"/>
         <image name="star" width="1943" height="1859"/>
         <image name="star_icon" width="30" height="30"/>
         <image name="trophy_icon" width="30" height="30"/>

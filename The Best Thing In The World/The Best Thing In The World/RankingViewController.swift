@@ -49,6 +49,9 @@ class RankingViewController: UIViewController, UITableViewDataSource , UITableVi
         cell.userName.text = self.listItems[indexPath.row].getOwner().getName()
         cell.points.text = "\(self.listItems[indexPath.row].getScore()) points"
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.none;
+
+        
         return cell
     }
     
