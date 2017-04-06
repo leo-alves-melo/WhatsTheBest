@@ -346,7 +346,7 @@
                                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
                                     </tabBarItem>
                                     <tabBarItem tag="2" title="Last Week" id="ZAp-rT-9H0">
-                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
+                                        <offsetWrapper key="titlePositionAdjustment" horizontal="11" vertical="-16"/>
                                     </tabBarItem>
                                     <tabBarItem tag="3" title="Today" id="LrN-Zk-iUA">
                                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
