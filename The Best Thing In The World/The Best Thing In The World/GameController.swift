@@ -46,6 +46,8 @@ class GameController: UIViewController, ItemPicker {
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var starView: StarView!
     
+    @IBOutlet weak var starCircle: UIImageView!
+    
     private var starSetCenterFlag = true
     private var starStartingCenter:CGPoint!
     
@@ -92,8 +94,18 @@ class GameController: UIViewController, ItemPicker {
             print("Error: sound not loaded")
         }
         
+        bgAudioPlayer.numberOfLoops = -1
         bgAudioPlayer.play()
         
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.toValue = CGFloat(M_PI * 2.0)
+        rotateAnimation.duration = 2.0
+        rotateAnimation.repeatCount = FLT_MAX;
+        
+        starCircle.layer.add(rotateAnimation, forKey: nil)
+        
+        //rotateView(targetView: starCircle, duration: 1.0)
     }
     
     func panAction(rec: UIPanGestureRecognizer) {
