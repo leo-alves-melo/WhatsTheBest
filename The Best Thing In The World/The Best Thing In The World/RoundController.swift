@@ -20,7 +20,6 @@ class RoundController {
         
         if let items = serverService.getRandomItem(8) {
             
-            //let item = Item(id: 1234, text: "batata", score: 10, owner: User(), date: "batata")
             for item in items {
                 self.queueItem.enqueue(item)
             }
@@ -46,8 +45,6 @@ class RoundController {
     {
         
         serverService.voteInAnItem(item)
-       
-        //acessar servidor e incrementar qtd de votos do item recebido.
         
     }
     
