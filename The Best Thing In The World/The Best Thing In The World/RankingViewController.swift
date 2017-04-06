@@ -18,6 +18,7 @@ class RankingViewController: UIViewController, UITableViewDataSource , UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBar.selectedItem = self.tabBar.items![0]
+        UITabBarItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15)], for: .normal)
         
         listItems = ServerService.sharedInstance.getRanking(type: RankingType.allTime.rawValue)!
 
