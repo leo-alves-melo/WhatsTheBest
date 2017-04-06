@@ -23,11 +23,16 @@ class RankingViewController: UIViewController, UITableViewDataSource , UITableVi
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let tag = tabBar.selectedItem!.tag
+        listItems = ServerService.sharedInstance.getRanking(type: tag)!
+        tableView.reloadData()
+
+    }
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let tag = tabBar.selectedItem!.tag
-        
         listItems = ServerService.sharedInstance.getRanking(type: tag)!
-        
         tableView.reloadData()
     }
     
