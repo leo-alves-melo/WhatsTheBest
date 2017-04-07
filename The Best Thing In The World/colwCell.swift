@@ -13,4 +13,7 @@ class colwCell: UICollectionViewCell {
     @IBOutlet weak var imgCell: UIImageView!
     
     @IBOutlet weak var lblCell: UILabel!
+    
+    
+    @IBOutlet weak var lblScore: UILabel!
 }

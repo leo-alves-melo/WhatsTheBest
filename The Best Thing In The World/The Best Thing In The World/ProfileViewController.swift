@@ -10,16 +10,27 @@ import UIKit
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    private var serverService = ServerService.sharedInstance
+
+    private var user:User = User()
+    
     @IBOutlet weak var viewTitle: UIView!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
-    var tableData:[String] = ["Potato", "Smartphone", "Australia", "Broccoli"]
     
-    var tableImages:[String] = ["batata", "cellphone", "australia", "brocolis"]
+    @IBOutlet weak var txtSubmissions: UILabel!
+    private var itens:[Item] = []
+    
+    
+    @IBOutlet weak var viewSubmissions: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        user = serverService.getUserByID(1234)
+        
+        itens=serverService.getAllUserItens(user)!
+    
         // Do any additional setup after loading the view.
         self.imgProfile.layer.cornerRadius = 8.0
         
@@ -34,13 +45,24 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         self.viewTitle.layer.shadowOpacity = 1.0
         self.viewTitle.layer.shadowRadius = 0.0
         
+        let borderTop = CALayer()
+        borderTop.borderColor = UIColor.lightGray.cgColor
+        borderTop.frame = CGRect(x: 0, y: 0 , width: self.collectionView.frame.width, height: 1)
+        borderTop.borderWidth = 1
+        self.viewSubmissions.layer.addSublayer(borderTop)
+        self.viewSubmissions.layer.masksToBounds = true
+        
+    
+        
+        
+        
       //  self.viewTitle.layer.backgroundColor = UIColor.white.cgColor
         
         
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tableData.count
+        return itens.count
     }
     
   
@@ -54,11 +76,20 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         
       
-        cell.lblCell.text = tableData[indexPath.row]
-        cell.imgCell.image = UIImage(named: tableImages[indexPath.row])
+        cell.lblCell.text = itens[indexPath.row].getSubtitle()
+        cell.imgCell.image = UIImage(named: itens[indexPath.row].getImageLink())
+        cell.lblScore.text = String(itens[indexPath.row].getScore()) + " votes"
         
-        cell.imgCell.layer.cornerRadius = 8.0
-        cell.imgCell.layer.masksToBounds = false
+        
+        cell.layer.cornerRadius = 8.0
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.layer.shadowRadius = 5.0
+        cell.layer.shadowOpacity = 0.2
+        cell.layer.shouldRasterize = true
+        cell.layer.rasterizationScale = UIScreen.main.scale
+        cell.layer.masksToBounds = false
+
         
         
         
@@ -88,3 +119,5 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     */
 
 }
+
+
