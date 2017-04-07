@@ -101,7 +101,7 @@ class ServerService {
         return false
     }
     
-    private func getUserByID(_ ID:Int) -> User {
+    public func getUserByID(_ ID:Int) -> User {
         
         if let filepath = Bundle.main.path(forResource: "users", ofType: nil) {
             do {

@@ -38,6 +38,7 @@ class GameController: UIViewController, ItemPicker {
     private var originalReportWidth:CGFloat = 0
     private var originalPassMaxX:CGFloat = 0
     
+    @IBOutlet weak var btnControllSound: UIButton!
     @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var passButton: UIButton!
     @IBOutlet weak var leftChoice: ContentView!
@@ -424,10 +425,18 @@ class GameController: UIViewController, ItemPicker {
         if(bgAudioPlayer.isPlaying)
         {
             bgAudioPlayer.stop()
+            btnControllSound.setBackgroundImage(UIImage(named: "iconmute"), for: .normal)
+
         }
         
         else {
+            let image = UIImage(named: "iconplayy") as UIImage?
+            //btnControllSound.setImage(image, for: .normal)
+            btnControllSound.setBackgroundImage(UIImage(named: "iconplayy"), for: .normal)
             bgAudioPlayer.play()
+
+            
+
         }
         
         
