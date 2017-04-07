@@ -448,7 +448,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="circlee" width="5096" height="5096"/>
+        <image name="circlee" width="200" height="200"/>
         <image name="muteicon" width="120" height="120"/>
         <image name="star" width="1943" height="1859"/>
         <image name="star_icon" width="30" height="30"/>
