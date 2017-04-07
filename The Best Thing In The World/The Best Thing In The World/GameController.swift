@@ -48,10 +48,11 @@ class GameController: UIViewController, ItemPicker {
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var starView: StarView!
-    
     @IBOutlet weak var starCircle: UIImageView!
-    
     @IBOutlet weak var lblGameTalk: UILabel!
+    @IBOutlet weak var getPointView: UIView!
+    
+    
     private var starSetCenterFlag = true
     private var starStartingCenter:CGPoint!
     
@@ -106,6 +107,8 @@ class GameController: UIViewController, ItemPicker {
         
         originalReportWidth = reportButton.bounds.width
         originalPassMaxX = passButton.bounds.maxX
+        
+        getPointView.transform = CGAffineTransform(rotationAngle: -0.15)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -210,6 +213,10 @@ class GameController: UIViewController, ItemPicker {
     func animateChoice(_ choiceView: ContentView) {
     
         let d = 0.7
+        
+        // shows +1 label when you pick an item
+        //animateGetPoint(duration: d, choice: choiceView)
+        
         if !flagMuted { choiceAudioPlayer.play() }
         UIView.animate(withDuration: d,
                        delay: 0,
@@ -399,9 +406,35 @@ class GameController: UIViewController, ItemPicker {
         //changeGameLabelText(whichItems)
     }
     
+    
     func changeGameLabelText(_ itemName:String, mod: Int) {
 
         lblGameTalk.text = roundController.loadSentence(itemName: itemName, mod: mod)
+    }
+    
+    func animateGetPoint(duration:TimeInterval, choice:ContentView) {
+        
+        self.getPointView.isHidden = false
+        self.getPointView.alpha = 1.0
+        
+        let distanceToFly:CGFloat = 50.0
+        let radius:CGFloat = 45.0
+        let angle = CGFloat.pi / 4
+        
+        //let origin = CGPoint(x: choice.center.x + radius * cos(angle), y: choice.center.y + radius * sin(angle))
+        //let destiny = CGPoint(x: origin.x + distanceToFly * cos(angle), y: origin.y + distanceToFly * sin(angle))
+        
+        let origin = CGPoint(x: choice.center.x, y: choice.center.y - radius)
+        let destiny = CGPoint(x: origin.x, y: origin.y - distanceToFly)
+        
+        //getPointView.transform = CGAffineTransform.identity
+        getPointView.center = origin
+        //getPointView.transform = CGAffineTransform(rotationAngle: angle)
+        UIView.animate(withDuration: duration, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut,
+                       animations: { self.getPointView.center = destiny },
+                       completion: { _ in UIView.animate(withDuration: duration/2,
+                                                         animations: { self.getPointView.alpha = 0.0 })
+                      })
     }
     
     
