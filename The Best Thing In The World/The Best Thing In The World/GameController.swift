@@ -170,7 +170,6 @@ class GameController: UIViewController, ItemPicker {
     
     func checkIfItemPicked(point: CGPoint) /*-> Item? */{
         
-<<<<<<< HEAD
         if reportingFlag {
             
             if leftChoice.frame.contains(point) {
@@ -187,33 +186,16 @@ class GameController: UIViewController, ItemPicker {
                 print("Escolheu esquerda!")
                 animateChoice(leftChoice)
                 roundController.increaseVoteItem(itemLeft)
+                lblGameTalk.text = sentences[itemLeft.getImageLink()]
             }
             else if rightChoice.frame.contains(point) {
                 allowsVoting = false
                 print("Escolheu direita!")
                 animateChoice(rightChoice)
                 roundController.increaseVoteItem(itemRight)
+                lblGameTalk.text = sentences[itemRight.getImageLink()]
             }
             else { starReturningAnimation(false) }
-=======
-        guard allowsVoting else { return }
-        
-        if leftChoice.frame.contains(point) {
-            allowsVoting = false
-            print("Escolheu esquerda!")
-            animateChoice(leftChoice)
-            roundController.increaseVoteItem(itemLeft)
-            lblGameTalk.text = sentences[itemLeft.getImageLink()]
-
-        }
-        else if rightChoice.frame.contains(point) {
-            allowsVoting = false
-            print("Escolheu direita!")
-            animateChoice(rightChoice)
-            roundController.increaseVoteItem(itemRight)
-            lblGameTalk.text = sentences[itemRight.getImageLink()]
-
->>>>>>> 1e9549a0ed24618789959cf0b66ec6a84fd6967e
         }
         else { starReturningAnimation(false) }
     }
@@ -360,14 +342,9 @@ class GameController: UIViewController, ItemPicker {
             } })
         
     }
-    
-<<<<<<< HEAD
+
     func updateItems(whichItems: Int) {
-=======
-    func updateItems() {
-        
         lblGameTalk.text = ""
->>>>>>> 1e9549a0ed24618789959cf0b66ec6a84fd6967e
         allowsVoting = true
         changeItems(whichItems)
     }
