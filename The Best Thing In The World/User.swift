@@ -35,6 +35,7 @@ class User {
         self.age = age
         self.profile = profile
         self.score = score
+    
     }
     
     func getId (user : User) -> Int

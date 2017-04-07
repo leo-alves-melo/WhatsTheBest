@@ -56,13 +56,13 @@ class GameController: UIViewController, ItemPicker {
     private var starStartingCenter:CGPoint!
     
     var initialTouchLocation:CGPoint!
+    var flagMuted = false
     
     private var sentences:[String:String] = [:]
     private var playSoung:Bool = true
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
-        lblGameTalk.text = ""
 
         leftChoice.tag = 1
         rightChoice.tag = 2
@@ -87,12 +87,14 @@ class GameController: UIViewController, ItemPicker {
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
         self.changeItems(3)
-        self.sentences = roundController.loadSentences()
+        
+        self.lblGameTalk.text = roundController.loadSentence(itemName: "initial", mod: 0)
         
         //prepares the sound effect
         do {
             try choiceAudioPlayer = AVAudioPlayer(contentsOf: choiceSound)
                 choiceAudioPlayer.prepareToPlay()
+                choiceAudioPlayer.volume = 0.7
             try reportAudioPlayer = AVAudioPlayer(contentsOf: reportSound)
                 reportAudioPlayer.prepareToPlay()
             try bgAudioPlayer = AVAudioPlayer(contentsOf: bgSound)
@@ -112,7 +114,8 @@ class GameController: UIViewController, ItemPicker {
         super.viewDidAppear(animated)
         
         bgAudioPlayer.numberOfLoops = -1
-        bgAudioPlayer.play()
+        if !flagMuted { bgAudioPlayer.play() }
+            
         
 
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
@@ -186,14 +189,14 @@ class GameController: UIViewController, ItemPicker {
                 print("Escolheu esquerda!")
                 animateChoice(leftChoice)
                 roundController.increaseVoteItem(itemLeft)
-                lblGameTalk.text = sentences[itemLeft.getImageLink()]
+                changeGameLabelText(itemLeft.getImageLink(), mod: -1)
             }
             else if rightChoice.frame.contains(point) {
                 allowsVoting = false
                 print("Escolheu direita!")
                 animateChoice(rightChoice)
                 roundController.increaseVoteItem(itemRight)
-                lblGameTalk.text = sentences[itemRight.getImageLink()]
+                changeGameLabelText(itemRight.getImageLink(), mod: -1)
             }
             else { starReturningAnimation(false) }
         }
@@ -207,7 +210,7 @@ class GameController: UIViewController, ItemPicker {
     func animateChoice(_ choiceView: ContentView) {
     
         let d = 0.7
-        choiceAudioPlayer.play()
+        if !flagMuted { choiceAudioPlayer.play() }
         UIView.animate(withDuration: d,
                        delay: 0,
                        //options: UIViewAnimationOptions.curveEaseIn,
@@ -253,7 +256,7 @@ class GameController: UIViewController, ItemPicker {
     func report(choice: ContentView, item: Item) {
         changeItems(choice.tag)
         cancelReportAction()
-        
+        changeGameLabelText("reported \(item)", mod: 2)
     }
     
     func cancelReportAction() {
@@ -294,13 +297,14 @@ class GameController: UIViewController, ItemPicker {
         
         if (reportingFlag == true) {
             cancelReportAction()
+            changeGameLabelText("cancelled", mod: 3)
         }
         else if allowsVoting == true {
             
             reportButton.setTitle("Cancel", for: UIControlState.normal)
             reportingFlag = true
             allowsVoting = false
-            reportAudioPlayer.play()
+            if !flagMuted { reportAudioPlayer.play() }
             
             UIView.animate(withDuration: 0.2,
                            delay: 0,
@@ -311,6 +315,8 @@ class GameController: UIViewController, ItemPicker {
                     self.leftChoice.layer.borderColor = #colorLiteral(red: 0.6, green: 0.2, blue: 0.3137254902, alpha: 1).cgColor
                     self.rightChoice.layer.borderColor = #colorLiteral(red: 0.6, green: 0.2, blue: 0.3137254902, alpha: 1).cgColor
             }, completion: nil)
+            
+            changeGameLabelText("report", mod: 1)
             
             shakeViewClockwise(duration: 0.15, itemView: rightChoice)
             shakeViewClockwise(duration: 0.15, itemView: leftChoice)
@@ -340,11 +346,9 @@ class GameController: UIViewController, ItemPicker {
         }, completion: { finished in if finished {
             self.shakeViewClockwise(duration: duration, itemView: itemView)
             } })
-        
     }
 
     func updateItems(whichItems: Int) {
-        lblGameTalk.text = ""
         allowsVoting = true
         changeItems(whichItems)
     }
@@ -392,24 +396,18 @@ class GameController: UIViewController, ItemPicker {
             subImageRight.text = itemRight.getSubtitle()
         }
         
-        changeGameLabelText(whichItems)
+        //changeGameLabelText(whichItems)
     }
     
-    func changeGameLabelText(_ modifier:Int) {
-        var indexRandom:Int
-        indexRandom = Int(arc4random_uniform(UInt32(2)))
-        if(indexRandom == 0)
-        {
-            //lblGameTalk.text = sentences[itemLeft.getImageLink()]
-        }
-        else {
-            //lblGameTalk.text = sentences[itemRight.getImageLink()]
-        }
+    func changeGameLabelText(_ itemName:String, mod: Int) {
+
+        lblGameTalk.text = roundController.loadSentence(itemName: itemName, mod: mod)
     }
     
     
     @IBAction func pass(_ sender: Any) {
         guard allowsVoting else { return }
+        changeGameLabelText("pass", mod: 4)
         changeItems(3)
     }
     
@@ -421,15 +419,18 @@ class GameController: UIViewController, ItemPicker {
    
     @IBAction func btnMute(_ sender: UIButton) {
         
-        if(bgAudioPlayer.isPlaying)
+        flagMuted = !flagMuted
+        
+        if(flagMuted)
         {
             bgAudioPlayer.stop()
+            reportAudioPlayer.stop()
+            choiceAudioPlayer.stop()
         }
         
         else {
             bgAudioPlayer.play()
         }
-        
         
     }
 }

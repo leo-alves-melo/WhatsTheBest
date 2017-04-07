@@ -29,6 +29,7 @@
 		FE16D9021E968C4000BC18C7 /* choice.wav in Resources */ = {isa = PBXBuildFile; fileRef = FE16D8FF1E968C4000BC18C7 /* choice.wav */; };
 		FE16D9031E968C4000BC18C7 /* report.wav in Resources */ = {isa = PBXBuildFile; fileRef = FE16D9001E968C4000BC18C7 /* report.wav */; };
 		FE16D9041E968C4000BC18C7 /* bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE16D9011E968C4000BC18C7 /* bg.mp3 */; };
+		FE16D9061E97F41600BC18C7 /* SentenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE16D9051E97F41600BC18C7 /* SentenceModel.swift */; };
 		FE62A40E1E8BFCE2005594B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */; };
 		FE62A4101E8BFCE2005594B6 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62A40F1E8BFCE2005594B6 /* GameController.swift */; };
 		FE62A4131E8BFCE2005594B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE62A4111E8BFCE2005594B6 /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		FE16D8FF1E968C4000BC18C7 /* choice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = choice.wav; sourceTree = "<group>"; };
 		FE16D9001E968C4000BC18C7 /* report.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = report.wav; sourceTree = "<group>"; };
 		FE16D9011E968C4000BC18C7 /* bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg.mp3; sourceTree = "<group>"; };
+		FE16D9051E97F41600BC18C7 /* SentenceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceModel.swift; sourceTree = "<group>"; };
 		FE62A40A1E8BFCE2005594B6 /* The Best Thing In The World.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Best Thing In The World.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE62A40D1E8BFCE2005594B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE62A40F1E8BFCE2005594B6 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				8BBA2D671E8D36F100254A67 /* ServerService.swift */,
+				FE16D9051E97F41600BC18C7 /* SentenceModel.swift */,
 				7EEB10C01E8D348D005CEBF6 /* User.swift */,
 				7EEB10BE1E8D3469005CEBF6 /* Item.swift */,
 				8BBA2D691E8D38BF00254A67 /* ServerModel.swift */,
@@ -208,7 +211,7 @@
 				TargetAttributes = {
 					FE62A4091E8BFCE2005594B6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = H3K85CCEUB;
+						DevelopmentTeam = UMGS9WR96D;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -258,6 +261,7 @@
 				7EEB10BF1E8D3469005CEBF6 /* Item.swift in Sources */,
 				8BBA2D6A1E8D38BF00254A67 /* ServerModel.swift in Sources */,
 				FE62A4101E8BFCE2005594B6 /* GameController.swift in Sources */,
+				FE16D9061E97F41600BC18C7 /* SentenceModel.swift in Sources */,
 				8BBA2D681E8D36F100254A67 /* ServerService.swift in Sources */,
 				DE4C4E5A1E95344D00A35E9C /* CustomTabBarController.swift in Sources */,
 				DE9376C91E8D806800D7827C /* RankingTableViewCell.swift in Sources */,
@@ -398,10 +402,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = H3K85CCEUB;
+				DEVELOPMENT_TEAM = UMGS9WR96D;
 				INFOPLIST_FILE = "The Best Thing In The World/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "br.org.eldorado.bepid.yasmin1.The-Best-Thing-In-The-World";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.org.eldorado.bepid.yasmin21.The-Best-Thing-In-The-World";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -412,10 +416,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = H3K85CCEUB;
+				DEVELOPMENT_TEAM = UMGS9WR96D;
 				INFOPLIST_FILE = "The Best Thing In The World/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "br.org.eldorado.bepid.yasmin1.The-Best-Thing-In-The-World";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.org.eldorado.bepid.yasmin21.The-Best-Thing-In-The-World";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
