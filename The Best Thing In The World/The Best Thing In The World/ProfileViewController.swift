@@ -13,9 +13,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var viewTitle: UIView!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
-    var tableData:[String] = ["Potato", "Smartphone", "Australia", ""]
+    var tableData:[String] = ["Potato", "Smartphone", "Australia", "Broccoli"]
     
-    var tableImages:[String] = ["batata", "cellphone", "australia", "plusicon"]
+    var tableImages:[String] = ["batata", "cellphone", "australia", "brocolis"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +28,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         self.imgProfile.layer.rasterizationScale = UIScreen.main.scale
         self.imgProfile.layer.masksToBounds = false
         
-        
-      //  self.viewTitle.layer.backgroundColor = UIColor.white.cgColor
-        
         self.viewTitle.layer.masksToBounds = false
         self.viewTitle.layer.shadowColor = UIColor.lightGray.cgColor
         self.viewTitle.layer.shadowOffset = CGSize(width: 0.0, height: 0.4)
         self.viewTitle.layer.shadowOpacity = 1.0
         self.viewTitle.layer.shadowRadius = 0.0
+        
+      //  self.viewTitle.layer.backgroundColor = UIColor.white.cgColor
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
