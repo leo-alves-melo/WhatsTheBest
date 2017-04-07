@@ -59,7 +59,8 @@ class GameController: UIViewController, ItemPicker {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        lblGameTalk.text = ""
+
         leftChoice.tag = 1
         rightChoice.tag = 2
         
@@ -167,12 +168,16 @@ class GameController: UIViewController, ItemPicker {
             print("Escolheu esquerda!")
             animateChoice(leftChoice)
             roundController.increaseVoteItem(itemLeft)
+            lblGameTalk.text = sentences[itemLeft.getImageLink()]
+
         }
         else if rightChoice.frame.contains(point) {
             allowsVoting = false
             print("Escolheu direita!")
             animateChoice(rightChoice)
             roundController.increaseVoteItem(itemRight)
+            lblGameTalk.text = sentences[itemRight.getImageLink()]
+
         }
         else { starReturningAnimation(false) }
     }
@@ -298,6 +303,8 @@ class GameController: UIViewController, ItemPicker {
     }
     
     func updateItems() {
+        
+        lblGameTalk.text = ""
         allowsVoting = true
         changeItems()
     }
@@ -333,10 +340,10 @@ class GameController: UIViewController, ItemPicker {
         indexRandom = Int(arc4random_uniform(UInt32(2)))
         if(indexRandom == 0)
         {
-            lblGameTalk.text = sentences[itemLeft.getImageLink()]
+            //lblGameTalk.text = sentences[itemLeft.getImageLink()]
         }
         else {
-            lblGameTalk.text = sentences[itemRight.getImageLink()]
+            //lblGameTalk.text = sentences[itemRight.getImageLink()]
         }
         
 
