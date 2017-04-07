@@ -59,7 +59,7 @@
                                 <rect key="frame" x="195" y="158" width="165" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i87-QC-t26">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i87-QC-t26">
                                         <rect key="frame" x="0.0" y="0.0" width="165" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -119,6 +119,7 @@
                         <outlet property="reportButton" destination="BLf-9w-Tli" id="S3N-GT-19v"/>
                         <outlet property="rightChoice" destination="tDq-VX-4QL" id="4Kp-Kd-8DR"/>
                         <outlet property="rightImage" destination="i87-QC-t26" id="PAr-Oe-yDx"/>
+                        <outlet property="starCircle" destination="FXJ-0W-qf6" id="Yt4-1w-h5s"/>
                         <outlet property="starView" destination="Kms-mW-uBW" id="BNY-Vq-Ld2"/>
                         <outlet property="subImageLeft" destination="DEb-7o-F69" id="68l-tt-CHP"/>
                         <outlet property="subImageRight" destination="vGA-SD-s9m" id="VCG-1H-9HR"/>

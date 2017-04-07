@@ -94,9 +94,18 @@ class GameController: UIViewController, ItemPicker {
             print("Error: sound not loaded")
         }
         
+        //rotateView(targetView: starCircle, duration: 1.0)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+        
+        super.viewDidAppear(animated)
+        
         bgAudioPlayer.numberOfLoops = -1
         bgAudioPlayer.play()
         
+
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = 0.0
         rotateAnimation.toValue = CGFloat(M_PI * 2.0)
@@ -105,8 +114,19 @@ class GameController: UIViewController, ItemPicker {
         
         starCircle.layer.add(rotateAnimation, forKey: nil)
         
-        //rotateView(targetView: starCircle, duration: 1.0)
+        
+    
     }
+
+    /*  music plays while app is minimized */
+    
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        bgAudioPlayer.stop()
+        //starCircle.layer.removeAllAnimations()
+    }
+    
     
     func panAction(rec: UIPanGestureRecognizer) {
         
