@@ -35,6 +35,9 @@ class GameController: UIViewController, ItemPicker {
     private var allowsVoting = true
     private var reportingFlag = false
     
+    private var originalReportWidth:CGFloat = 0
+    private var originalPassMaxX:CGFloat = 0
+    
     @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var passButton: UIButton!
     @IBOutlet weak var leftChoice: ContentView!
@@ -83,7 +86,7 @@ class GameController: UIViewController, ItemPicker {
         //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
-        self.changeItems()
+        self.changeItems(3)
         self.sentences = roundController.loadSentences()
         
         //prepares the sound effect
@@ -99,7 +102,8 @@ class GameController: UIViewController, ItemPicker {
             print("Error: sound not loaded")
         }
         
-        //rotateView(targetView: starCircle, duration: 1.0)
+        originalReportWidth = reportButton.bounds.width
+        originalPassMaxX = passButton.bounds.maxX
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -118,8 +122,6 @@ class GameController: UIViewController, ItemPicker {
         rotateAnimation.repeatCount = FLT_MAX;
         
         starCircle.layer.add(rotateAnimation, forKey: nil)
-        
-        
     
     }
 
@@ -137,12 +139,14 @@ class GameController: UIViewController, ItemPicker {
         
         switch rec.state {
             case .began:
-                if starSetCenterFlag {
+                if self.starSetCenterFlag {
+                    print("oi")
                     starStartingCenter = starView.center
-                    starSetCenterFlag = false
+                    self.starSetCenterFlag = false
                 }
                 fallthrough
             case .changed:
+                if reportingFlag { break }
                 let translation = rec.translation(in: self.view)
 
                 starView.center = CGPoint(x: starView.center.x + translation.x, y: starView.center.y + translation.y)
@@ -154,30 +158,44 @@ class GameController: UIViewController, ItemPicker {
     }
     
     func itemTapAction(sender : UITapGestureRecognizer) {
-        starStartingCenter = starView.center
+        print("oi")
+        if self.starSetCenterFlag {
+            starStartingCenter = starView.center
+            self.starSetCenterFlag = false
+        }
+        
         checkIfItemPicked(point: sender.location(ofTouch: 0, in: self.view))
         //pickItem(choice: sender)
     }
     
     func checkIfItemPicked(point: CGPoint) /*-> Item? */{
         
-        guard allowsVoting else { return }
-        
-        if leftChoice.frame.contains(point) {
-            allowsVoting = false
-            print("Escolheu esquerda!")
-            animateChoice(leftChoice)
-            roundController.increaseVoteItem(itemLeft)
-            lblGameTalk.text = sentences[itemLeft.getImageLink()]
-
+        if reportingFlag {
+            
+            if leftChoice.frame.contains(point) {
+                report(choice: leftChoice, item: itemLeft)
+            }
+            else if rightChoice.frame.contains(point) {
+                report(choice: rightChoice, item: itemRight)
+            }
         }
-        else if rightChoice.frame.contains(point) {
-            allowsVoting = false
-            print("Escolheu direita!")
-            animateChoice(rightChoice)
-            roundController.increaseVoteItem(itemRight)
-            lblGameTalk.text = sentences[itemRight.getImageLink()]
-
+        else if allowsVoting {
+        
+            if leftChoice.frame.contains(point) {
+                allowsVoting = false
+                print("Escolheu esquerda!")
+                animateChoice(leftChoice)
+                roundController.increaseVoteItem(itemLeft)
+                lblGameTalk.text = sentences[itemLeft.getImageLink()]
+            }
+            else if rightChoice.frame.contains(point) {
+                allowsVoting = false
+                print("Escolheu direita!")
+                animateChoice(rightChoice)
+                roundController.increaseVoteItem(itemRight)
+                lblGameTalk.text = sentences[itemRight.getImageLink()]
+            }
+            else { starReturningAnimation(false) }
         }
         else { starReturningAnimation(false) }
     }
@@ -205,7 +223,7 @@ class GameController: UIViewController, ItemPicker {
                        animations: {
                             self.starView.transform = CGAffineTransform(rotationAngle: 3 * CGFloat.pi)
         }, completion: { finished in self.starReturningAnimation(finished)
-            self.updateItems() })
+            self.updateItems(whichItems: 3) })
         
         UIView.animate(withDuration: d,
                        delay: 0,
@@ -230,45 +248,68 @@ class GameController: UIViewController, ItemPicker {
             self.starView.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
     }
+
     
+    func report(choice: ContentView, item: Item) {
+        changeItems(choice.tag)
+        cancelReportAction()
+        
+    }
+    
+    func cancelReportAction() {
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       animations: {
+                        self.leftChoice.layer.borderColor = #colorLiteral(red: 0, green: 0.5182169676, blue: 0.5800015926, alpha: 1).cgColor
+                        self.rightChoice.layer.borderColor = #colorLiteral(red: 0, green: 0.5182169676, blue: 0.5800015926, alpha: 1).cgColor
+                        self.reportButton.frame = CGRect(x: self.reportButton.frame.minX,
+                                                         y: self.reportButton.frame.minY,
+                                                         width: self.originalReportWidth,
+                                                         height: self.reportButton.frame.height)
+        }, completion: nil)
+        
+        self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        leftChoice.layer.removeAllAnimations()
+        rightChoice.layer.removeAllAnimations()
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       options: UIViewAnimationOptions.curveEaseInOut,
+                       animations: {
+                        self.leftChoice.transform = CGAffineTransform.identity
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       options: UIViewAnimationOptions.curveEaseInOut,
+                       animations: {
+                        self.rightChoice.transform =  CGAffineTransform.identity
+        }, completion: nil)
+        allowsVoting = true
+        reportingFlag = false
+        reportButton.setTitle("Report", for: UIControlState.normal)
+    }
     
     @IBAction func reportAction(_ sender: Any) {
         
         if (reportingFlag == true) {
-            print("boi")
-            self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            
-            leftChoice.layer.removeAllAnimations()
-            rightChoice.layer.removeAllAnimations()
-            UIView.animate(withDuration: 0.2,
-                           delay: 0,
-                           options: UIViewAnimationOptions.curveEaseInOut,
-                           animations: {
-                                self.leftChoice.transform = CGAffineTransform.identity
-                           }, completion: nil)
-
-            UIView.animate(withDuration: 0.2,
-                           delay: 0,
-                           options: UIViewAnimationOptions.curveEaseInOut,
-                           animations: {
-                            self.rightChoice.transform =  CGAffineTransform.identity
-                           }, completion: nil)
-            allowsVoting = true
-            reportingFlag = false
-            reportButton.setTitle("Report", for: UIControlState.normal)
+            cancelReportAction()
         }
         else if allowsVoting == true {
-            print("oi")
+            
             reportButton.setTitle("Cancel", for: UIControlState.normal)
             reportingFlag = true
             allowsVoting = false
             reportAudioPlayer.play()
             
-            
             UIView.animate(withDuration: 0.2,
                            delay: 0,
                 animations: {
-                    self.view.backgroundColor = #colorLiteral(red: 0.159234022, green: 0.1608105964, blue: 0.1608105964, alpha: 1)
+                    self.reportButton.frame = CGRect(x: self.reportButton.frame.minX, y: self.reportButton.frame.minY,
+                                                    width: 324.0 - 53.0,//self.passButton. - self.reportButton.bounds.minX,
+                                                    height: self.reportButton.frame.height)
+                    self.leftChoice.layer.borderColor = #colorLiteral(red: 0.6, green: 0.2, blue: 0.3137254902, alpha: 1).cgColor
+                    self.rightChoice.layer.borderColor = #colorLiteral(red: 0.6, green: 0.2, blue: 0.3137254902, alpha: 1).cgColor
             }, completion: nil)
             
             shakeViewClockwise(duration: 0.15, itemView: rightChoice)
@@ -280,7 +321,7 @@ class GameController: UIViewController, ItemPicker {
     {
         UIView.animate(withDuration: duration,
                        delay: 0,
-                       options: UIViewAnimationOptions.curveEaseInOut,
+                       options: [.curveEaseInOut, .allowUserInteraction],
                        animations: {
                         itemView.transform = CGAffineTransform(rotationAngle: -0.10)
         }, completion: { finished in if finished {
@@ -293,7 +334,7 @@ class GameController: UIViewController, ItemPicker {
 
         UIView.animate(withDuration: duration,
                        delay: 0,
-                       options: UIViewAnimationOptions.curveEaseInOut,
+                       options: [.curveEaseInOut, .allowUserInteraction],
                        animations: {
                         itemView.transform = CGAffineTransform(rotationAngle: 0.10)
         }, completion: { finished in if finished {
@@ -301,41 +342,60 @@ class GameController: UIViewController, ItemPicker {
             } })
         
     }
-    
-    func updateItems() {
-        
+
+    func updateItems(whichItems: Int) {
         lblGameTalk.text = ""
         allowsVoting = true
-        changeItems()
+        changeItems(whichItems)
     }
     
     
-    func changeItems()
+    func changeItems(_ whichItems:Int)
     {
         let duration = 0.20
         
-        itemRight = roundController.changeItem()
-        UIView.animate(withDuration: duration,
-                       animations: { self.rightImage.alpha = 0.0 },
-                       completion: { _ in
-                                    self.rightImage.image = UIImage(named: self.itemRight.getImageLink())
-                                    UIView.animate(withDuration: duration, animations: {
-                                        self.rightImage.alpha = 1.0 })
-                                    }
-        )
-    
-        itemLeft = roundController.changeItem()
-        UIView.animate(withDuration: duration,
-                       animations: { self.leftImage.alpha = 0.0 },
-                       completion: { _ in
-                        self.leftImage.image = UIImage(named: self.itemLeft.getImageLink())
-                        UIView.animate(withDuration: duration, animations: {
-                            self.leftImage.alpha = 1.0 })
-                        }
-        )
-        subImageRight.text = itemRight.getSubtitle()
-        subImageLeft.text = itemLeft.getSubtitle()
+        if whichItems == 1 || whichItems == 3 {
+            itemLeft = roundController.changeItem()
+            UIView.animate(withDuration: duration,
+                           animations: {
+                                self.leftImage.alpha = 0.0
+                                if self.reportingFlag {
+                                        self.leftChoice.backgroundColor = #colorLiteral(red: 0.6, green: 0.2, blue: 0.3137254902, alpha: 1)
+                                }},
+                           completion: { _ in
+                            self.leftImage.image = UIImage(named: self.itemLeft.getImageLink())
+                            UIView.animate(withDuration: duration, animations: {
+                                self.leftImage.alpha = 1.0
+                                self.leftChoice.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                                })
+            }
+            )
+            subImageLeft.text = itemLeft.getSubtitle()
+        }
         
+        if whichItems == 2 || whichItems == 3 {
+            
+            itemRight = roundController.changeItem()
+            UIView.animate(withDuration: duration,
+                           animations: { self.rightImage.alpha = 0.0
+                                        if self.reportingFlag {
+                                            self.rightChoice.backgroundColor = #colorLiteral(red: 0.6, green: 0.2, blue: 0.3137254902, alpha: 1)
+                                        }},
+                           completion: { _ in
+                                        self.rightImage.image = UIImage(named: self.itemRight.getImageLink())
+                                        UIView.animate(withDuration: duration, animations: {
+                                            self.rightImage.alpha = 1.0
+                                            self.rightChoice.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                                            })
+                                        }
+            )
+            subImageRight.text = itemRight.getSubtitle()
+        }
+        
+        changeGameLabelText(whichItems)
+    }
+    
+    func changeGameLabelText(_ modifier:Int) {
         var indexRandom:Int
         indexRandom = Int(arc4random_uniform(UInt32(2)))
         if(indexRandom == 0)
@@ -345,15 +405,12 @@ class GameController: UIViewController, ItemPicker {
         else {
             //lblGameTalk.text = sentences[itemRight.getImageLink()]
         }
-        
-
-        
     }
     
     
     @IBAction func pass(_ sender: Any) {
         guard allowsVoting else { return }
-        changeItems()
+        changeItems(3)
     }
     
     override func didReceiveMemoryWarning() {

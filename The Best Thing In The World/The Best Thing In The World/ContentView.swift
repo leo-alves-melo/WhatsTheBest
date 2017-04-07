@@ -22,7 +22,7 @@ class ContentView : UIView {
     public func adaptLayer() {
         self.layer.cornerRadius = 8.0
         //self.layer.borderColor = UIColor.lightGray.cgColor
-        self.layer.borderColor = #colorLiteral(red: 0, green: 0.5182169676, blue: 0.5800015926, alpha: 0.5726923077).cgColor
+        self.layer.borderColor = #colorLiteral(red: 0, green: 0.5182169676, blue: 0.5800015926, alpha: 1).cgColor
         self.layer.borderWidth = 2.0
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowRadius = 5.0

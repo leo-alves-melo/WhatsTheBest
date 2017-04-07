@@ -190,6 +190,19 @@ class ServerService {
         return itemsList
     }
     
+    func getAllUserItens(_ user:User) -> [Item]? {
+        
+        var userItemsList:[Item] = []
+        
+        for item in allItemsList {
+            if(user.getId(user: user) == item.getOwner().getId(user: user)) {
+                userItemsList.append(item)
+            }
+        }
+        
+        return userItemsList
+    }
+    
     private func sortListItems(_ itemsList: inout [Item]) {
         
         //Solving using insertion sort
