@@ -36,7 +36,7 @@ class SentenceModel {
                                "unicamp":"The home of countless great minds! And also the Varginha E.T.",
                                "pastel":"Fried goodness.",
                                "guitarra":"The best kind of jam.",
-                               "copadomundo":"GOOOOOOOOOOOOOOOOOOOOAAAAAAAL!!!",
+                               "copadomundo":"GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOAAAAAAAAAAAAAAAAAAAL!!!",
                                "mario":"It's-a-me, Plumber-man! Woo-hoo!",
                                "buzz": "To infinity... And beyond!",
                                "pinkfloyd":"Sometimes I feel like I'm just a brick in the wall.",

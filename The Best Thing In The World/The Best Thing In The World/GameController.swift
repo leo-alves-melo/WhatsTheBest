@@ -218,7 +218,7 @@ class GameController: UIViewController, ItemPicker {
         let d = 0.7
         
         // shows +1 label when you pick an item
-        animateGetPoint(duration: d, choice: choiceView)
+        //animateGetPoint(duration: d, choice: choiceView)
         
         if !flagMuted { choiceAudioPlayer.play() }
         UIView.animate(withDuration: d,
