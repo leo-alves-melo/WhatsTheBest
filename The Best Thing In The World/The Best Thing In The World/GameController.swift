@@ -55,7 +55,7 @@ class GameController: UIViewController, ItemPicker {
     var initialTouchLocation:CGPoint!
     
     private var sentences:[String:String] = [:]
-
+    private var playSoung:Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -355,6 +355,19 @@ class GameController: UIViewController, ItemPicker {
     }
     
    
+    @IBAction func btnMute(_ sender: UIButton) {
+        
+        if(bgAudioPlayer.isPlaying)
+        {
+            bgAudioPlayer.stop()
+        }
+        
+        else {
+            bgAudioPlayer.play()
+        }
+        
+        
+    }
 }
 
 
