@@ -49,7 +49,6 @@ class GameController: UIViewController, ItemPicker {
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var starView: StarView!
     @IBOutlet weak var starCircle: UIImageView!
-    @IBOutlet weak var lblGameTalk: UILabel!
     @IBOutlet weak var getPointView: UIView!
     
     @IBOutlet weak var btnControlSound: UIButton!
@@ -219,7 +218,7 @@ class GameController: UIViewController, ItemPicker {
         let d = 0.7
         
         // shows +1 label when you pick an item
-        //animateGetPoint(duration: d, choice: choiceView)
+        animateGetPoint(duration: d, choice: choiceView)
         
         if !flagMuted { choiceAudioPlayer.play() }
         UIView.animate(withDuration: d,
