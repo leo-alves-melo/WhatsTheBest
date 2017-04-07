@@ -48,15 +48,17 @@ class GameController: UIViewController, ItemPicker {
     
     @IBOutlet weak var starCircle: UIImageView!
     
+    @IBOutlet weak var lblGameTalk: UILabel!
     private var starSetCenterFlag = true
     private var starStartingCenter:CGPoint!
     
     var initialTouchLocation:CGPoint!
+    
+    private var sentences:[String:String] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.changeItems()
         
         leftChoice.tag = 1
         rightChoice.tag = 2
@@ -80,6 +82,8 @@ class GameController: UIViewController, ItemPicker {
         //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
+        self.changeItems()
+        self.sentences = roundController.loadSentences()
         
         //prepares the sound effect
         do {
@@ -324,6 +328,19 @@ class GameController: UIViewController, ItemPicker {
         )
         subImageRight.text = itemRight.getSubtitle()
         subImageLeft.text = itemLeft.getSubtitle()
+        
+        var indexRandom:Int
+        indexRandom = Int(arc4random_uniform(UInt32(2)))
+        if(indexRandom == 0)
+        {
+            lblGameTalk.text = sentences[itemLeft.getImageLink()]
+        }
+        else {
+            lblGameTalk.text = sentences[itemRight.getImageLink()]
+        }
+        
+
+        
     }
     
     
