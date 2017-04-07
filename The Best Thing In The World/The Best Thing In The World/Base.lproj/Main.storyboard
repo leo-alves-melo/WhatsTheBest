@@ -109,7 +109,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTN-K5-yhh">
-                                <rect key="frame" x="53" y="498" width="271" height="21"/>
+                                <rect key="frame" x="-1" y="498" width="376" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="19"/>
                                 <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -129,7 +129,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" title="Game" image="star_icon" id="qiy-kF-jCH"/>
                     <connections>
-                        <outlet property="lblGameTalk" destination="gTN-K5-yhh" id="AJg-4r-Tbo"/>
+                        <outlet property="lblGameTalk" destination="gTN-K5-yhh" id="1o3-Sw-DzQ"/>
                         <outlet property="leftChoice" destination="0gB-ox-mx4" id="ycr-QO-ULf"/>
                         <outlet property="leftImage" destination="bCz-Bm-gEE" id="aZu-Sx-Lgg"/>
                         <outlet property="reportButton" destination="BLf-9w-Tli" id="S3N-GT-19v"/>
