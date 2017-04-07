@@ -13,9 +13,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var viewTitle: UIView!
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
-    var tableData:[String] = ["Potato", "Smartphone", "Australia", ""]
+    var tableData:[String] = ["Potato", "Smartphone", "Australia", "Broccoli"]
     
-    var tableImages:[String] = ["batata", "cellphone", "australia", "plusicon"]
+    var tableImages:[String] = ["batata", "cellphone", "australia", "brocolis"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
