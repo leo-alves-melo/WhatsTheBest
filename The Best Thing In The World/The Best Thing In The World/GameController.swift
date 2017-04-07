@@ -52,13 +52,13 @@ class GameController: UIViewController, ItemPicker {
     @IBOutlet weak var lblGameTalk: UILabel!
     @IBOutlet weak var getPointView: UIView!
     
-    
+    @IBOutlet weak var btnControlSound: UIButton!
+    @IBOutlet weak var lblGameTalk: UILabel!
     private var starSetCenterFlag = true
     private var starStartingCenter:CGPoint!
-    
+    private var user:User = User()
     var initialTouchLocation:CGPoint!
     var flagMuted = false
-    
     private var sentences:[String:String] = [:]
     private var playSoung:Bool = true
     override func viewDidLoad() {
@@ -87,6 +87,7 @@ class GameController: UIViewController, ItemPicker {
         //rightChoice.addGestureRecognizer(tapChoice)
         // Do any additional setup after loading the view, typically from a nib.
         roundController.getItemsFromServer()
+        user=roundController.getLoggedUser()
         self.changeItems(3)
         
         self.lblGameTalk.text = roundController.loadSentence(itemName: "initial", mod: 0)
@@ -193,12 +194,15 @@ class GameController: UIViewController, ItemPicker {
                 animateChoice(leftChoice)
                 roundController.increaseVoteItem(itemLeft)
                 changeGameLabelText(itemLeft.getImageLink(), mod: -1)
+                roundController.increaseUserScore(user)
+                
             }
             else if rightChoice.frame.contains(point) {
                 allowsVoting = false
                 print("Escolheu direita!")
                 animateChoice(rightChoice)
                 roundController.increaseVoteItem(itemRight)
+                roundController.increaseUserScore(user)
                 changeGameLabelText(itemRight.getImageLink(), mod: -1)
             }
             else { starReturningAnimation(false) }
@@ -256,7 +260,8 @@ class GameController: UIViewController, ItemPicker {
         UIView.animate(withDuration: 0.5, delay: 0, animations: {
             self.starView.center = self.starStartingCenter
             self.starView.transform = CGAffineTransform(scaleX: 1, y: 1)
-        })
+        }, completion: {_ in UIView.animate(withDuration: 0.5, delay: 0, animations: {
+                        self.lblGameTalk.alpha = 0.0}) })
     }
 
     
@@ -408,7 +413,7 @@ class GameController: UIViewController, ItemPicker {
     
     
     func changeGameLabelText(_ itemName:String, mod: Int) {
-
+        lblGameTalk.alpha = 1.0
         lblGameTalk.text = roundController.loadSentence(itemName: itemName, mod: mod)
     }
     
@@ -459,11 +464,17 @@ class GameController: UIViewController, ItemPicker {
             bgAudioPlayer.stop()
             reportAudioPlayer.stop()
             choiceAudioPlayer.stop()
+            btnControlSound.setBackgroundImage(UIImage(named: "iconmute"), for: .normal)
+
         }
         
         else {
+            btnControlSound.setBackgroundImage(UIImage(named: "iconplayy"), for: .normal)
+
             bgAudioPlayer.play()
         }
+        
+        
         
     }
 }

@@ -50,5 +50,8 @@ class User {
     func getScore() -> Int {
         return self.score
     }
-}
+    
+    func increaseScore() {
+        self.score += 1
+    }}
 

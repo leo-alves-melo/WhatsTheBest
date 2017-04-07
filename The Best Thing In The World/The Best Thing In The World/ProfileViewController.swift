@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var userScore: UILabel!
     @IBOutlet weak var txtSubmissions: UILabel!
     private var itens:[Item] = []
     
@@ -27,7 +28,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        user = serverService.getUserByID(1234)
+        user = serverService.getCurrentUser()
         
         itens=serverService.getAllUserItens(user)!
     
@@ -52,6 +53,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         self.viewSubmissions.layer.addSublayer(borderTop)
         self.viewSubmissions.layer.masksToBounds = true
         
+        userScore.text = String(user.getScore())
+        
     
         
         
@@ -59,6 +62,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
       //  self.viewTitle.layer.backgroundColor = UIColor.white.cgColor
         
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        userScore.text = String(user.getScore())
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

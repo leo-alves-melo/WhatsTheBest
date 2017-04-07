@@ -16,11 +16,13 @@ class ServerService {
     private var user:User? = User(id: 1, name: "teste", gender: "F", age: 11, profile: "normal", score: 90)
     
     public var allItemsList:[Item] = []
+    public var loggedUser = User()
     
     private init() {
         
         if let list = getAllItems() {
              allItemsList = list
+             loggedUser = self.getUserByID(1234)
             
         }
        
@@ -380,6 +382,18 @@ class ServerService {
         
         
     }
+    func increaseUserScore(_ user:User) {
+        
+        self.loggedUser.increaseScore()
+        
+    }
+    
+    func getCurrentUser() -> User
+    {
+        return self.loggedUser
+    }
+    
+    
 }
 
 

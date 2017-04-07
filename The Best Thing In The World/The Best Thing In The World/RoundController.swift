@@ -16,6 +16,8 @@ class RoundController {
 
     private var queueItem = Queue<Item>()
     
+    private var user = User()
+    
 
     func getItemsFromServer() {
         
@@ -72,5 +74,15 @@ class RoundController {
             s = SentenceModel.systemSentences[mod]
         }
         return s
+    }
+    
+    func getLoggedUser() -> User {
+        
+        self.user=serverService.getCurrentUser()
+        return user;
+    }
+    func increaseUserScore (_ user:User)
+    {
+        serverService.increaseUserScore(user)
     }
 }
