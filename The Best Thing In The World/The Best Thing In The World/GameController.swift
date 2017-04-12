@@ -146,7 +146,6 @@ class GameController: UIViewController, ItemPicker {
         switch rec.state {
             case .began:
                 if self.starSetCenterFlag {
-                    print("oi")
                     starStartingCenter = starView.center
                     self.starSetCenterFlag = false
                 }
@@ -164,7 +163,6 @@ class GameController: UIViewController, ItemPicker {
     }
     
     func itemTapAction(sender : UITapGestureRecognizer) {
-        print("oi")
         if self.starSetCenterFlag {
             starStartingCenter = starView.center
             self.starSetCenterFlag = false
@@ -256,10 +254,19 @@ class GameController: UIViewController, ItemPicker {
     }
     
     func starReturningAnimation(_ finished: Bool) {
+        
+        var duration = 0.5
+        
+        if (self.lblGameTalk.text?.characters.count)! > 35 {
+            print("entrou no loop")
+            duration = 0.8
+        }
+        
+        
         UIView.animate(withDuration: 0.5, delay: 0, animations: {
             self.starView.center = self.starStartingCenter
             self.starView.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }, completion: {_ in UIView.animate(withDuration: 0.5, delay: 0, animations: {
+        }, completion: {_ in UIView.animate(withDuration: 0.8, delay: 0, animations: {
                         self.lblGameTalk.alpha = 0.0}) })
     }
 

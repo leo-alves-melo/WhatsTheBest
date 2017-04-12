@@ -27,7 +27,7 @@ class SentenceModel {
                                "arcondicionado":"Nothing better on a warm day.",
                                "breakingbad": "I am the one who knocks.",
                                "patrick": "\"Hello, is this the best thing in the world?\" \"No, this is Patrick!",
-                               "temaki": "I once ate 8 of these in an all-you-can-eat-buffet. No regrets whatsoever.",
+                               "temaki": "I once ate 8 of these in an all-you-can-eat-buffet. No regrets!",
                                "pizza": "Eight slices of cheesy bliss!",
                                "crash":"Only 90's kids will remember this.",
                                "deadpool":"Well I may be just a text box, but man, Deadpool is my hero!",
