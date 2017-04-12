@@ -50,7 +50,6 @@ class SentenceModel {
                                "facebook": "Never judge a Facebook by its cover picture.",
                                "dolly": "He's your buddy!",
                                "wifi": "I feel like we just connected a bit.",
-                               "apple": "Smart choice.",
                                "monalisa":"What IS she smiling at anyways?",
                                "robertocarlos": "See you in the New Year!",
                                "business":"Pleasure doing business with you.",

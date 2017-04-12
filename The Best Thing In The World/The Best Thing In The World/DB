@@ -40,7 +40,6 @@
 {"ID":1028, "subtitle":"Facebook", "user":1000, "score":0,"date":"25/04/2017","imageLink": "facebook"},
 {"ID":1029, "subtitle":"Dollynho", "user":1000, "score":100,"date":"25/01/2017","imageLink": "dolly"},
 {"ID":1030, "subtitle":"Wi-Fi", "user":1000, "score":0,"date":"25/04/2017","imageLink": "wifi"},
-{"ID":1031, "subtitle":"Apple", "user":1000, "score":98,"date":"25/04/2017","imageLink": "apple"},
 {"ID":1032, "subtitle":"Monalisa", "user":1000, "score":0,"date":"25/04/2017","imageLink": "monalisa"},
 {"ID":1033, "subtitle":"Roberto Carlos", "user":1000, "score":0,"date":"25/04/2017","imageLink": "robertocarlos"},
 {"ID":1035, "subtitle":"Pikachu", "user":1000, "score":0,"date":"25/04/2017","imageLink": "pikachu"},
